@@ -1,8 +1,7 @@
-import React from "react";
+import React, { useEffect, useState, useCallback, ChangeEvent } from "react";
 import { NavLink } from "react-router-dom";
 
-// import { Select } from "antd";
-
+import api from "../../services/api";
 import {
   FiGrid,
   FiRepeat,
@@ -39,12 +38,32 @@ import {
   TransactionInfos,
 } from "./styles";
 
-const Dashboard: React.FC = () => {
-  // const { Option } = Select;
+interface CountryData {
+  label: string;
+  id: string;
+  value: string;
+  flag: string;
+}
 
-  // function handleChange(value: string) {
-  //   console.log(`selected ${value}`);
-  // }
+const Dashboard: React.FC = () => {
+  const [countries, setCountries] = useState<CountryData[]>([]);
+
+  const [selectedCountry, setSelectedCountry] = useState<CountryData>();
+
+  useEffect(() => {
+    api.get("/currencies").then((response) => {
+      setCountries(response.data);
+    });
+  }, []);
+
+  const handleSelectedCountry = useCallback(
+    (event: ChangeEvent<HTMLSelectElement>) => {
+      const country = event.target.value;
+      console.log(country);
+      // setSelectedCountry(country);
+    },
+    []
+  );
 
   return (
     <Container>
@@ -120,9 +139,12 @@ const Dashboard: React.FC = () => {
               src="https://avatars0.githubusercontent.com/u/57776263?s=460&u=0492ca374347582300b38a8665c05574b329fec6&v=4"
               alt="flag"
             />
-            <select>
-              <option value="0">Brazil</option>
-              <option value="0">Selecione uma Cidade</option>
+            <select onChange={handleSelectedCountry}>
+              {countries.map((country) => (
+                <option key={country.id} value={country.value}>
+                  {country.label}
+                </option>
+              ))}
             </select>
           </div>
 
