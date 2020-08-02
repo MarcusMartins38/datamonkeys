@@ -9,11 +9,17 @@ export default createGlobalStyle`
   html, body, #root {
     height: 100%;
     overflow-y: hidden;
-    background-color: #E5E5E5;
+    background-color: #f6f5f5;
   }
   *, button, input {
     border: 0;
     outline: 0;
     font-family: 'Inter', sans-serif;
+
+  }
+
+  button, input, label, select {
+    cursor: pointer;
+
   }
 `;

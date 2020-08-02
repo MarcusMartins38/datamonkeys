@@ -29,7 +29,10 @@ import {
   ListOfPlans,
   InputRadio,
   RigthSideContainer,
+  RigthSideButtons,
   PaymentDetails,
+  MoneyConverted,
+  TransactionInfos,
 } from "./styles";
 
 const Dashboard: React.FC = () => {
@@ -152,43 +155,90 @@ const Dashboard: React.FC = () => {
 
         <ListOfPlans>
           <InputRadio>
-            <input type="radio" name="option" />
-            <div>
+            <input type="radio" name="option" id="option1" />
+            <label htmlFor="option1">
               <p>Get 27 July 2020 till 12pm</p>
               <span>Express</span>
-            </div>
-            <h2>$ 0.99</h2>
+            </label>
+            <strong>$ 0.99</strong>
           </InputRadio>
 
           <InputRadio>
-            <input type="radio" name="option" />
-            <div>
+            <input type="radio" name="option" id="option2" />
+            <label htmlFor="option2">
               <p>Get 27 July 2020 till 12pm</p>
               <span>Express</span>
-            </div>
-            <h2>$ 0.99</h2>
+            </label>
+            <strong>$ 0.99</strong>
           </InputRadio>
 
           <InputRadio>
-            <input type="radio" name="option" />
-            <div>
+            <input type="radio" name="option" id="option3" />
+            <label htmlFor="option3">
               <p>Get 27 July 2020 till 12pm</p>
               <span>Express</span>
-            </div>
-            <h2>$ 0.99</h2>
+            </label>
+            <strong>$ 0.99</strong>
           </InputRadio>
         </ListOfPlans>
       </MiddleSideContainer>
 
       <RigthSideContainer>
-        <div>
+        <RigthSideButtons>
           <button></button>
           <button></button>
-        </div>
+        </RigthSideButtons>
 
         <PaymentDetails>
-          <div></div>
-          <div></div>
+          <h2>Payment Details</h2>
+
+          <MoneyConverted>
+            <div>
+              <p>22,124</p>
+              <span>
+                {" "}
+                <img
+                  src="https://avatars0.githubusercontent.com/u/57776263?s=460&u=0492ca374347582300b38a8665c05574b329fec6&v=4"
+                  alt="flag"
+                />
+                BRL
+              </span>
+            </div>
+            <button></button>
+            <div>
+              <p>4,124</p>
+              <span>
+                <img
+                  src="https://avatars0.githubusercontent.com/u/57776263?s=460&u=0492ca374347582300b38a8665c05574b329fec6&v=4"
+                  alt="flag"
+                />
+                EUR
+              </span>
+            </div>
+          </MoneyConverted>
+
+          <TransactionInfos>
+            <div>
+              <p>
+                <FiCalendar size={24} /> Delivery
+              </p>
+              <strong>27 July till 12pm</strong>
+            </div>
+            <div>
+              <p>
+                <FiCalendar size={24} /> Delivery
+              </p>
+              <strong>27 July till 12pm</strong>
+            </div>
+            <div>
+              <p>
+                <FiCalendar size={24} /> Delivery
+              </p>
+              <strong>27 July till 12pm</strong>
+            </div>
+
+            <button>Confirm</button>
+          </TransactionInfos>
         </PaymentDetails>
       </RigthSideContainer>
     </Container>

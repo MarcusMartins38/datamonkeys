@@ -14,9 +14,10 @@ export const LeftSideContainer = styled.div`
   display: flex;
   flex-direction: column;
 
+  max-width: 283px;
   height: 100%;
 
-  margin-top: 63px;
+  margin: 63px auto 0 0;
 `;
 
 export const ProfileInfo = styled.div`
@@ -92,8 +93,10 @@ export const MiddleSideContainer = styled.div`
   display: flex;
   flex-direction: column;
 
-  margin-left: 102px;
+  max-width: 755px;
+
   margin-top: 62px;
+  margin-left: 50px;
 `;
 
 export const MiddleHeader = styled.div`
@@ -267,30 +270,49 @@ export const InputRadio = styled.div`
   align-items: center;
   justify-content: space-between;
 
-  width: 630px;
+  max-width: 630px;
   height: 88px;
 
-  border: 2px solid black;
   box-sizing: border-box;
   border-radius: 4px;
 
   position: relative;
   margin-bottom: 20px;
 
+  background-color: transparent;
+
+  transition: margin-bottom 0.5s, margin-top 0.5s;
+
+  &:hover {
+    margin-bottom: 15px;
+    margin-top: 8px;
+  }
+
+  input[type="radio"]:checked + label {
+    background-color: #fff6f9;
+    border: 2px solid #ff8cba;
+  }
+
   input {
-    position: absolute;
     margin-left: 22px;
+    z-index: 1;
 
     width: 24px;
     height: 24px;
   }
 
-  div {
+  label {
+    position: absolute;
     display: flex;
     flex-direction: column;
     justify-content: center;
+    border: 2px solid #e4e7eb;
+    z-index: 0;
 
-    margin-left: 62px;
+    width: 100%;
+    height: 100%;
+
+    padding-left: 62px;
 
     p {
       font-weight: 500;
@@ -305,18 +327,175 @@ export const InputRadio = styled.div`
     }
   }
 
-  h2 {
+  strong {
     font-weight: 600;
     font-size: 18px;
     line-height: 22px;
+    z-index: 1;
 
     margin-right: 33px;
-    margin-top: 8px;
+    /* margin-top: 8px; */
 
     color: #1f2933;
   }
 `;
 
-export const RigthSideContainer = styled.div``;
+export const RigthSideContainer = styled.div`
+  margin: 0 auto;
+  max-width: 400px;
+`;
 
-export const PaymentDetails = styled.div``;
+export const RigthSideButtons = styled.div`
+  margin-top: 82px;
+  margin-bottom: 90px;
+
+  display: flex;
+  justify-content: flex-end;
+
+  button {
+    min-width: 54px;
+    min-height: 54px;
+
+    border-radius: 50%;
+
+    background: #ffffff;
+    box-shadow: 0px 2px 7px rgba(123, 135, 148, 0.28);
+
+    & + button {
+      margin-left: 27px;
+    }
+  }
+`;
+
+export const PaymentDetails = styled.div`
+  height: 100%;
+
+  width: 382px;
+  max-height: 642px;
+
+  border: 2px solid #e4e7eb;
+  box-sizing: border-box;
+  border-radius: 4px;
+
+  h2 {
+    font-weight: 600;
+    font-size: 24px;
+    line-height: 29px;
+    letter-spacing: 0.015em;
+
+    color: #1f2933;
+
+    margin: 40px 0 50px 40px;
+  }
+`;
+
+export const MoneyConverted = styled.div`
+  display: flex;
+  align-items: center;
+  height: 150px;
+
+  border-bottom: 2px solid #e4e7eb;
+
+  div:first-of-type {
+    margin-left: 60px;
+  }
+
+  p {
+    font-weight: 600;
+    font-size: 18px;
+    line-height: 22px;
+    text-align: right;
+
+    margin-bottom: 0px;
+
+    color: #1f2933;
+  }
+
+  span {
+    font-size: 14px;
+    line-height: 17px;
+    margin-left: 8px;
+
+    color: #52606d;
+    img {
+      border-radius: 50%;
+      width: 12px;
+      height: 12px;
+
+      margin-right: 8px;
+    }
+  }
+
+  button {
+    border-radius: 50%;
+    width: 36px;
+    height: 36px;
+    background: #ffffff;
+    box-shadow: 0px 2px 7px rgba(123, 135, 148, 0.28);
+
+    margin: 0 57px;
+  }
+`;
+
+export const TransactionInfos = styled.div`
+  display: flex;
+  flex-direction: column;
+
+  width: 320px;
+  margin: 50px auto 0 auto;
+
+  div {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+
+    margin-bottom: 20px;
+
+    p {
+      display: flex;
+      align-items: center;
+
+      font-size: 17px;
+      line-height: 21px;
+
+      color: #3e4c59;
+
+      svg {
+        margin-right: 18px;
+      }
+    }
+  }
+
+  strong {
+    font-weight: 600;
+    font-size: 18px;
+    line-height: 22px;
+
+    color: #1f2933;
+
+    margin-top: -10px;
+  }
+
+  button {
+    margin: 50px auto 0 auto;
+
+    background: #f364a2;
+    border-radius: 4px;
+
+    height: 46px;
+    width: 301px;
+
+    font-weight: 500;
+    font-size: 18px;
+    line-height: 22px;
+
+    color: #ffffff;
+
+    transition: width 0.5s, height 0.5s;
+
+    &:hover {
+      width: 320px;
+      height: 50px;
+    }
+  }
+`;
