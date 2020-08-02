@@ -157,12 +157,22 @@ export const SelectionsDiv = styled.div`
     }
 
     p {
-      padding: 16px 16px 0 16px;
+      padding: 0 16px 0 16px;
+      margin-right: 30px;
 
       font-size: 16px;
       line-height: 19px;
 
       color: #52606d;
+    }
+
+    img {
+      width: 20px;
+      height: 20px;
+
+      margin-right: 8px;
+
+      border-radius: 50%;
     }
 
     select {
@@ -344,8 +354,10 @@ export const InputRadio = styled.div`
     }
 
     span {
-      margin-top: -20px;
-      position: absolute;
+      font-size: 14px;
+      line-height: 17px;
+
+      color: #616e7c;
     }
 
     strong {
@@ -503,7 +515,7 @@ export const TransactionInfos = styled.div`
   }
 
   button {
-    margin: 88px auto 0 auto;
+    margin: 150px auto 0 auto;
 
     background: #f364a2;
     border-radius: 4px;

@@ -116,6 +116,10 @@ const Dashboard: React.FC = () => {
         <SelectionsDiv>
           <div>
             <p>from:</p>
+            <img
+              src="https://avatars0.githubusercontent.com/u/57776263?s=460&u=0492ca374347582300b38a8665c05574b329fec6&v=4"
+              alt="flag"
+            />
             <select>
               <option value="0">Brazil</option>
               <option value="0">Selecione uma Cidade</option>
@@ -124,6 +128,10 @@ const Dashboard: React.FC = () => {
 
           <div>
             <p>to:</p>
+            <img
+              src="https://avatars0.githubusercontent.com/u/57776263?s=460&u=0492ca374347582300b38a8665c05574b329fec6&v=4"
+              alt="flag"
+            />
             <select>
               <option value="0">Germany</option>
               <option value="0">Selecione uma Cidade</option>
