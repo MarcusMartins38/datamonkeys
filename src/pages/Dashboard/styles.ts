@@ -100,6 +100,8 @@ export const MiddleSideContainer = styled.div`
 `;
 
 export const MiddleHeader = styled.div`
+  margin-bottom: 61px;
+
   h1 {
     font-weight: 500;
     font-size: 30px;
@@ -200,6 +202,7 @@ export const ConvertedMoneyDiv = styled.div`
 
     background: #f5f7fa;
     border-radius: 8px;
+    border: 1px solid black;
 
     span {
       margin: 27px auto 8px 26px;
@@ -291,11 +294,29 @@ export const InputRadio = styled.div`
   input[type="radio"]:checked + label {
     background-color: #fff6f9;
     border: 2px solid #ff8cba;
+
+    svg {
+      display: block;
+    }
+  }
+
+  svg {
+    width: 24px;
+    height: 24px;
+    z-index: 1;
+    margin-left: -40px;
+
+    background-color: #da127d;
+    color: white;
+    border-radius: 50%;
+    position: absolute;
+
+    display: none;
   }
 
   input {
+    position: absolute;
     margin-left: 22px;
-    z-index: 1;
 
     width: 24px;
     height: 24px;
@@ -304,8 +325,8 @@ export const InputRadio = styled.div`
   label {
     position: absolute;
     display: flex;
-    flex-direction: column;
-    justify-content: center;
+    justify-content: space-between;
+    align-items: center;
     border: 2px solid #e4e7eb;
     z-index: 0;
 
@@ -323,29 +344,30 @@ export const InputRadio = styled.div`
     }
 
     span {
-      margin-top: -16px;
+      margin-top: -20px;
+      position: absolute;
     }
-  }
 
-  strong {
-    font-weight: 600;
-    font-size: 18px;
-    line-height: 22px;
-    z-index: 1;
+    strong {
+      font-weight: 600;
+      font-size: 18px;
+      line-height: 22px;
+      z-index: 1;
 
-    margin-right: 33px;
-    /* margin-top: 8px; */
+      margin-right: 33px;
+      /* margin-top: 8px; */
 
-    color: #1f2933;
+      color: #1f2933;
+    }
   }
 `;
 
-export const RigthSideContainer = styled.div`
+export const RightSideContainer = styled.div`
   margin: 0 auto;
   max-width: 400px;
 `;
 
-export const RigthSideButtons = styled.div`
+export const RightSideButtons = styled.div`
   margin-top: 82px;
   margin-bottom: 90px;
 
@@ -385,7 +407,7 @@ export const PaymentDetails = styled.div`
 
     color: #1f2933;
 
-    margin: 40px 0 50px 40px;
+    margin: 40px 0 10px 40px;
   }
 `;
 
@@ -434,6 +456,10 @@ export const MoneyConverted = styled.div`
     box-shadow: 0px 2px 7px rgba(123, 135, 148, 0.28);
 
     margin: 0 57px;
+
+    svg {
+      margin: 0 auto;
+    }
   }
 `;
 
@@ -477,7 +503,7 @@ export const TransactionInfos = styled.div`
   }
 
   button {
-    margin: 50px auto 0 auto;
+    margin: 88px auto 0 auto;
 
     background: #f364a2;
     border-radius: 4px;

@@ -1,8 +1,7 @@
 import React from "react";
 import { NavLink } from "react-router-dom";
 
-import { Select } from "antd";
-import "antd/dist/antd.css";
+// import { Select } from "antd";
 
 import {
   FiGrid,
@@ -14,6 +13,11 @@ import {
   FiLogOut,
   FiRefreshCcw,
   FiCalendar,
+  FiArrowRight,
+  FiFileText,
+  FiHelpCircle,
+  FiDollarSign,
+  FiCheck,
 } from "react-icons/fi";
 
 import {
@@ -28,19 +32,19 @@ import {
   CalendarHeader,
   ListOfPlans,
   InputRadio,
-  RigthSideContainer,
-  RigthSideButtons,
+  RightSideContainer,
+  RightSideButtons,
   PaymentDetails,
   MoneyConverted,
   TransactionInfos,
 } from "./styles";
 
 const Dashboard: React.FC = () => {
-  const { Option } = Select;
+  // const { Option } = Select;
 
-  function handleChange(value: string) {
-    console.log(`selected ${value}`);
-  }
+  // function handleChange(value: string) {
+  //   console.log(`selected ${value}`);
+  // }
 
   return (
     <Container>
@@ -157,37 +161,56 @@ const Dashboard: React.FC = () => {
           <InputRadio>
             <input type="radio" name="option" id="option1" />
             <label htmlFor="option1">
-              <p>Get 27 July 2020 till 12pm</p>
-              <span>Express</span>
+              <FiCheck />
+
+              <div>
+                <p>Get 27 July 2020 till 12pm</p>
+                <span>Express</span>
+              </div>
+
+              <strong>$ 0.99</strong>
             </label>
-            <strong>$ 0.99</strong>
           </InputRadio>
 
           <InputRadio>
             <input type="radio" name="option" id="option2" />
             <label htmlFor="option2">
-              <p>Get 27 July 2020 till 12pm</p>
-              <span>Express</span>
+              <FiCheck />
+
+              <div>
+                <p>Get 27 July 2020 till 12pm</p>
+                <span>Express</span>
+              </div>
+
+              <strong>$ 0.99</strong>
             </label>
-            <strong>$ 0.99</strong>
           </InputRadio>
 
           <InputRadio>
             <input type="radio" name="option" id="option3" />
             <label htmlFor="option3">
-              <p>Get 27 July 2020 till 12pm</p>
-              <span>Express</span>
+              <FiCheck />
+
+              <div>
+                <p>Get 27 July 2020 till 12pm</p>
+                <span>Express</span>
+              </div>
+
+              <strong>$ 0.99</strong>
             </label>
-            <strong>$ 0.99</strong>
           </InputRadio>
         </ListOfPlans>
       </MiddleSideContainer>
 
-      <RigthSideContainer>
-        <RigthSideButtons>
-          <button></button>
-          <button></button>
-        </RigthSideButtons>
+      <RightSideContainer>
+        <RightSideButtons>
+          <button>
+            <FiFileText size={24} color="#1F2933" />
+          </button>
+          <button>
+            <FiHelpCircle size={24} color="#1F2933" />
+          </button>
+        </RightSideButtons>
 
         <PaymentDetails>
           <h2>Payment Details</h2>
@@ -196,7 +219,6 @@ const Dashboard: React.FC = () => {
             <div>
               <p>22,124</p>
               <span>
-                {" "}
                 <img
                   src="https://avatars0.githubusercontent.com/u/57776263?s=460&u=0492ca374347582300b38a8665c05574b329fec6&v=4"
                   alt="flag"
@@ -204,7 +226,9 @@ const Dashboard: React.FC = () => {
                 BRL
               </span>
             </div>
-            <button></button>
+            <button>
+              <FiArrowRight size={24} color="#1F2933" />
+            </button>
             <div>
               <p>4,124</p>
               <span>
@@ -226,21 +250,21 @@ const Dashboard: React.FC = () => {
             </div>
             <div>
               <p>
-                <FiCalendar size={24} /> Delivery
+                <FiDollarSign size={24} /> Conversion rate
               </p>
-              <strong>27 July till 12pm</strong>
+              <strong>22,124</strong>
             </div>
             <div>
               <p>
-                <FiCalendar size={24} /> Delivery
+                <FiShuffle size={24} /> Recipient gets
               </p>
-              <strong>27 July till 12pm</strong>
+              <strong>4,124</strong>
             </div>
 
             <button>Confirm</button>
           </TransactionInfos>
         </PaymentDetails>
-      </RigthSideContainer>
+      </RightSideContainer>
     </Container>
   );
 };
