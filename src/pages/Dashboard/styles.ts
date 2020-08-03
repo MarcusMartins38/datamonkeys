@@ -82,6 +82,15 @@ export const ServicesButtons = styled.div`
 
       color: #1f2933;
 
+      transition: color 0.5s, border-left 1s;
+
+      &:hover {
+        color: #e8368f;
+        border-collapse: separate;
+        border-spacing: 115px 0;
+        border-left: 3px solid #e8368f;
+      }
+
       svg {
         margin-right: 19px;
       }
@@ -273,7 +282,7 @@ export const CalendarHeader = styled.div`
     color: #1f2933;
   }
 
-  div {
+  span {
     display: flex;
 
     p {
@@ -282,6 +291,21 @@ export const CalendarHeader = styled.div`
       margin-right: 13px;
 
       color: #1f2933;
+    }
+
+    svg {
+      &:hover {
+        color: #f364a2;
+        cursor: pointer;
+      }
+    }
+
+    .calendar {
+      position: absolute;
+
+      margin-top: 32px;
+      background-color: white;
+      z-index: 1;
     }
   }
 `;

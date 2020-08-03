@@ -1,14 +1,15 @@
-import React, {
-  useEffect,
-  useState,
-  useCallback,
-  ChangeEvent,
-  useMemo,
-} from "react";
+import React, { useEffect, useState, useCallback, ChangeEvent } from "react";
 import { NavLink } from "react-router-dom";
 
 import api from "../../services/api";
 import fx from "../../services/money";
+
+import DayPicker from "react-day-picker";
+import DayPickerInput from "react-day-picker/DayPickerInput";
+import "react-day-picker/lib/style.css";
+
+import { DatePicker, Space } from "antd";
+import "antd/dist/antd.css";
 
 import {
   FiGrid,
@@ -80,14 +81,14 @@ const Dashboard: React.FC = () => {
     });
   }, []);
 
-  useEffect(() => {
-    Axios.get(
-      "https://openexchangerates.org/api/latest.json?app_id=f2d55242a75a4a8685d5c1c4c3c40bef"
-    ).then((response) => {
-      fx.rates = response.data.rates;
-      fx.base = response.data.base;
-    });
-  }, []);
+  // useEffect(() => {
+  //   Axios.get(
+  //     "https://openexchangerates.org/api/latest.json?app_id=f2d55242a75a4a8685d5c1c4c3c40bef"
+  //   ).then((response) => {
+  //     fx.rates = response.data.rates;
+  //     fx.base = response.data.base;
+  //   });
+  // }, []);
 
   useEffect(() => {
     try {
@@ -251,10 +252,19 @@ const Dashboard: React.FC = () => {
 
         <CalendarHeader>
           <h2>Choose a plan:</h2>
-          <div>
+          <span>
             <p>Choose the date:</p>
             <FiCalendar size={24} />
-          </div>
+            <DatePicker
+              bordered={false}
+              placeholder=""
+              style={{
+                position: "absolute",
+                color: "transparent",
+                marginLeft: "18px",
+              }}
+            />
+          </span>
         </CalendarHeader>
 
         <ListOfPlans>
