@@ -223,6 +223,19 @@ export const ConvertedMoneyDiv = styled.div`
       color: #52606d;
     }
 
+    input {
+      font-weight: 600;
+      font-size: 30px;
+      line-height: 36px;
+
+      margin-right: 10px;
+      color: #323f4b;
+
+      max-width: 97px;
+
+      background-color: transparent;
+    }
+
     h2 {
       margin: 0 auto 0 26px;
 
@@ -439,10 +452,15 @@ export const MoneyConverted = styled.div`
     font-size: 18px;
     line-height: 22px;
     text-align: right;
+    color: #1f2933;
 
+    max-width: 60px;
     margin-bottom: 0px;
 
-    color: #1f2933;
+    overflow-x: scroll;
+    ::-webkit-scrollbar {
+      display: none;
+    }
   }
 
   span {
@@ -510,6 +528,12 @@ export const TransactionInfos = styled.div`
     line-height: 22px;
 
     color: #1f2933;
+    max-width: 140px;
+
+    overflow-x: scroll;
+    ::-webkit-scrollbar {
+      display: none;
+    }
 
     margin-top: -10px;
   }

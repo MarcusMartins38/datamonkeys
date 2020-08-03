@@ -1,7 +1,15 @@
-import React, { useEffect, useState, useCallback, ChangeEvent } from "react";
+import React, {
+  useEffect,
+  useState,
+  useCallback,
+  ChangeEvent,
+  useMemo,
+} from "react";
 import { NavLink } from "react-router-dom";
 
 import api from "../../services/api";
+import fx from "../../services/money";
+
 import {
   FiGrid,
   FiRepeat,
@@ -37,6 +45,7 @@ import {
   MoneyConverted,
   TransactionInfos,
 } from "./styles";
+import Axios from "axios";
 
 interface CountryData {
   label: string;
@@ -48,7 +57,22 @@ interface CountryData {
 const Dashboard: React.FC = () => {
   const [countries, setCountries] = useState<CountryData[]>([]);
 
-  const [selectedCountry, setSelectedCountry] = useState<CountryData>();
+  const [selectedCountryFrom, setSelectedCountryFrom] = useState<CountryData>({
+    label: "Canada",
+    id: "CAD",
+    value: "CAD",
+    flag: "https://www.countryflags.io/ca/flat/64.png",
+  });
+
+  const [selectedCountryTo, setSelectedCountryTo] = useState<CountryData>({
+    label: "Canada",
+    id: "CAD",
+    value: "CAD",
+    flag: "https://www.countryflags.io/ca/flat/64.png",
+  });
+
+  const [valueTobeConverted, setValueToBeConverted] = useState(0);
+  const [convertedValue, setConvertedValue] = useState(0);
 
   useEffect(() => {
     api.get("/currencies").then((response) => {
@@ -56,11 +80,50 @@ const Dashboard: React.FC = () => {
     });
   }, []);
 
-  const handleSelectedCountry = useCallback(
+  useEffect(() => {
+    Axios.get(
+      "https://openexchangerates.org/api/latest.json?app_id=f2d55242a75a4a8685d5c1c4c3c40bef"
+    ).then((response) => {
+      fx.rates = response.data.rates;
+      fx.base = response.data.base;
+    });
+  }, []);
+
+  useEffect(() => {
+    try {
+      setConvertedValue(
+        fx
+          .convert(valueTobeConverted, {
+            from: selectedCountryFrom?.value,
+            to: selectedCountryTo?.value,
+          })
+          .toFixed(2)
+      );
+    } catch (err) {}
+  }, [selectedCountryFrom, selectedCountryTo, valueTobeConverted]);
+
+  const handleSelectedCountryFrom = useCallback(
     (event: ChangeEvent<HTMLSelectElement>) => {
       const country = event.target.value;
-      console.log(country);
-      // setSelectedCountry(country);
+
+      api
+        .get("/currencies", { params: { label: country } })
+        .then((response) => {
+          setSelectedCountryFrom(response.data[0]);
+        });
+    },
+    []
+  );
+
+  const handleSelectedCountryTo = useCallback(
+    (event: ChangeEvent<HTMLSelectElement>) => {
+      const country = event.target.value;
+
+      api
+        .get("/currencies", { params: { label: country } })
+        .then((response) => {
+          setSelectedCountryTo(response.data[0]);
+        });
     },
     []
   );
@@ -73,7 +136,7 @@ const Dashboard: React.FC = () => {
             src="https://avatars0.githubusercontent.com/u/57776263?s=460&u=0492ca374347582300b38a8665c05574b329fec6&v=4"
             alt="perfil"
           />
-          <h2>Julio Merisio</h2>
+          <h2>Marcus Martins</h2>
           <p>1231T233</p>
         </ProfileInfo>
 
@@ -135,13 +198,12 @@ const Dashboard: React.FC = () => {
         <SelectionsDiv>
           <div>
             <p>from:</p>
-            <img
-              src="https://avatars0.githubusercontent.com/u/57776263?s=460&u=0492ca374347582300b38a8665c05574b329fec6&v=4"
-              alt="flag"
-            />
-            <select onChange={handleSelectedCountry}>
+            {selectedCountryFrom && (
+              <img src={selectedCountryFrom.flag} alt="flag" />
+            )}
+            <select onChange={handleSelectedCountryFrom}>
               {countries.map((country) => (
-                <option key={country.id} value={country.value}>
+                <option key={country.id} value={country.label}>
                   {country.label}
                 </option>
               ))}
@@ -150,31 +212,39 @@ const Dashboard: React.FC = () => {
 
           <div>
             <p>to:</p>
-            <img
-              src="https://avatars0.githubusercontent.com/u/57776263?s=460&u=0492ca374347582300b38a8665c05574b329fec6&v=4"
-              alt="flag"
-            />
-            <select>
-              <option value="0">Germany</option>
-              <option value="0">Selecione uma Cidade</option>
+            {selectedCountryTo && (
+              <img src={selectedCountryTo.flag} alt="flag" />
+            )}
+            <select onChange={handleSelectedCountryTo}>
+              {countries.map((country) => (
+                <option key={country.id} value={country.label}>
+                  {country.label}
+                </option>
+              ))}
             </select>
           </div>
         </SelectionsDiv>
 
         <ConvertedMoneyDiv>
-          <div id="div">
-            <span id="p">You send</span>
-            <h2 id="h2">
-              <strong>22,124</strong> BRL
+          <div>
+            <span>You send</span>
+            <h2>
+              <input
+                placeholder="22,124"
+                value={valueTobeConverted}
+                type="number"
+                onChange={(e) => setValueToBeConverted(Number(e.target.value))}
+              />
+              {selectedCountryFrom.value}
             </h2>
           </div>
 
           <FiRefreshCcw size={18} color="#f364a2" />
 
-          <div id="div">
+          <div>
             <span>Recipient gets</span>
             <h2>
-              <strong>4,124</strong> EUR
+              <input value={convertedValue}></input> {selectedCountryTo.value}
             </h2>
           </div>
         </ConvertedMoneyDiv>
@@ -247,26 +317,20 @@ const Dashboard: React.FC = () => {
 
           <MoneyConverted>
             <div>
-              <p>22,124</p>
+              <p>{valueTobeConverted}</p>
               <span>
-                <img
-                  src="https://avatars0.githubusercontent.com/u/57776263?s=460&u=0492ca374347582300b38a8665c05574b329fec6&v=4"
-                  alt="flag"
-                />
-                BRL
+                <img src={selectedCountryFrom.flag} alt="flag" />
+                {selectedCountryFrom.value}
               </span>
             </div>
             <button>
               <FiArrowRight size={24} color="#1F2933" />
             </button>
             <div>
-              <p>4,124</p>
+              <p>{convertedValue}</p>
               <span>
-                <img
-                  src="https://avatars0.githubusercontent.com/u/57776263?s=460&u=0492ca374347582300b38a8665c05574b329fec6&v=4"
-                  alt="flag"
-                />
-                EUR
+                <img src={selectedCountryTo.flag} alt="flag" />
+                {selectedCountryTo.value}
               </span>
             </div>
           </MoneyConverted>
@@ -282,13 +346,13 @@ const Dashboard: React.FC = () => {
               <p>
                 <FiDollarSign size={24} /> Conversion rate
               </p>
-              <strong>22,124</strong>
+              <strong>{valueTobeConverted}</strong>
             </div>
             <div>
               <p>
                 <FiShuffle size={24} /> Recipient gets
               </p>
-              <strong>4,124</strong>
+              <strong>{convertedValue}</strong>
             </div>
 
             <button>Confirm</button>
