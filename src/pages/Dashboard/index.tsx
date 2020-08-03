@@ -256,12 +256,11 @@ const Dashboard: React.FC = () => {
             <p>Choose the date:</p>
             <FiCalendar size={24} />
             <DatePicker
+              id="calendar"
               bordered={false}
               placeholder=""
               style={{
                 position: "absolute",
-                color: "transparent",
-                marginLeft: "18px",
               }}
             />
           </span>
