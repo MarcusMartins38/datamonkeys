@@ -43,7 +43,7 @@ interface CountryData {
   flag: string;
 }
 
-interface DataFromChild {
+interface DataCountryConvertMoney {
   selectedCountryFrom: CountryData;
   selectedCountryTo: CountryData;
   valueToBeConverted: number;
@@ -60,26 +60,19 @@ const Dashboard: React.FC = () => {
   });
   const [datePayInfo, setDatePayInfo] = useState("");
 
-  const [countries, setCountries] = useState<CountryData[]>([]);
-
-  const [selectedCountryFrom, setSelectedCountryFrom] = useState<CountryData>({
+  const defaultCountry = {
     label: "Canada",
     id: "CAD",
     value: "CAD",
     flag: "https://www.countryflags.io/ca/flat/64.png",
+  };
+
+  const [data, setData] = useState<DataCountryConvertMoney>({
+    selectedCountryFrom: defaultCountry,
+    selectedCountryTo: defaultCountry,
+    valueToBeConverted: 0,
+    convertedValue: 0,
   });
-
-  const [selectedCountryTo, setSelectedCountryTo] = useState<CountryData>({
-    label: "Canada",
-    id: "CAD",
-    value: "CAD",
-    flag: "https://www.countryflags.io/ca/flat/64.png",
-  });
-
-  const [valueToBeConverted, setValueToBeConverted] = useState(0);
-  const [convertedValue, setConvertedValue] = useState(0);
-
-  const [data, setData] = useState<DataFromChild>();
 
   useEffect(() => {
     if (radioButtonInfo.wichRadio === "option1") {
@@ -93,20 +86,17 @@ const Dashboard: React.FC = () => {
     }
   }, [datePayInfo, radioButtonInfo]);
 
-  const countryAndConvertedMoney = useCallback((data: DataFromChild) => {
-    setSelectedCountryFrom(data.selectedCountryFrom);
-    setSelectedCountryTo(data.selectedCountryTo);
-    setValueToBeConverted(data.valueToBeConverted);
-    setConvertedValue(data.convertedValue);
-
-    console.log(data);
-  }, []);
+  const countryAndConvertedMoney = useCallback(
+    (data: DataCountryConvertMoney) => {
+      setData(data);
+    },
+    []
+  );
 
   const toggleModal = useCallback((): void => {
     // setOpenCalendar(!openCalendar);
     if (openCalendar === true) {
       setOpenCalendar(false);
-      console.log("Container Clique: ", openCalendar);
     }
   }, [openCalendar]);
 
@@ -137,18 +127,18 @@ const Dashboard: React.FC = () => {
 
     const dataConfirmed = ` sentAt: "${sentAt}",
     plan: "${radioButtonInfo.plan}",
-    sent: ${valueToBeConverted},
-    received: ${convertedValue},
-    from: "${selectedCountryFrom.value}",
-    to: "${selectedCountryTo.value}",`;
+    sent: ${data.valueToBeConverted},
+    received: ${data.convertedValue},
+    from: "${data.selectedCountryFrom.value}",
+    to: "${data.selectedCountryTo.value}",`;
 
     window.alert(dataConfirmed);
   }, [
-    convertedValue,
+    data.convertedValue,
+    data.selectedCountryFrom.value,
+    data.selectedCountryTo.value,
+    data.valueToBeConverted,
     radioButtonInfo.plan,
-    selectedCountryFrom.value,
-    selectedCountryTo.value,
-    valueToBeConverted,
   ]);
 
   return (
@@ -241,20 +231,20 @@ const Dashboard: React.FC = () => {
 
           <MoneyConverted>
             <div>
-              <p>{valueToBeConverted}</p>
+              <p>{data.valueToBeConverted}</p>
               <span>
-                <img src={selectedCountryFrom.flag} alt="flag" />
-                {selectedCountryFrom.value}
+                <img src={data.selectedCountryFrom.flag} alt="flag" />
+                {data.selectedCountryFrom.value}
               </span>
             </div>
             <button>
               <FiArrowRight size={24} color="#1F2933" />
             </button>
             <div>
-              <p>{convertedValue}</p>
+              <p>{data.convertedValue}</p>
               <span>
-                <img src={selectedCountryTo.flag} alt="flag" />
-                {selectedCountryTo.value}
+                <img src={data.selectedCountryTo.flag} alt="flag" />
+                {data.selectedCountryTo.value}
               </span>
             </div>
           </MoneyConverted>
@@ -270,13 +260,13 @@ const Dashboard: React.FC = () => {
               <p>
                 <FiDollarSign size={24} /> Conversion rate
               </p>
-              <strong>{valueToBeConverted}</strong>
+              <strong>{data.valueToBeConverted}</strong>
             </div>
             <div>
               <p>
                 <FiShuffle size={24} /> Recipient gets
               </p>
-              <strong>{convertedValue}</strong>
+              <strong>{data.convertedValue}</strong>
             </div>
 
             <button onClick={handleButtonConfirm}>Confirm</button>

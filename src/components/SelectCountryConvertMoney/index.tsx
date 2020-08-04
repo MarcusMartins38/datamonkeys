@@ -16,7 +16,7 @@ interface CountryData {
   flag: string;
 }
 
-interface DataFromChild {
+interface DataCountryConvertMoney {
   selectedCountryFrom: CountryData;
   selectedCountryTo: CountryData;
   valueToBeConverted: number;
@@ -24,7 +24,7 @@ interface DataFromChild {
 }
 
 interface Props {
-  countryAndConvertedMoney: (data: DataFromChild) => void;
+  countryAndConvertedMoney: (data: DataCountryConvertMoney) => void;
 }
 
 const SelectCountryConvertMoney: React.FC<Props> = ({
@@ -55,14 +55,14 @@ const SelectCountryConvertMoney: React.FC<Props> = ({
     });
   }, []);
 
-  useEffect(() => {
-    Axios.get(
-      "https://openexchangerates.org/api/latest.json?app_id=f2d55242a75a4a8685d5c1c4c3c40bef"
-    ).then((response) => {
-      fx.rates = response.data.rates;
-      fx.base = response.data.base;
-    });
-  }, []);
+  // useEffect(() => {
+  //   Axios.get(
+  //     "https://openexchangerates.org/api/latest.json?app_id=f2d55242a75a4a8685d5c1c4c3c40bef"
+  //   ).then((response) => {
+  //     fx.rates = response.data.rates;
+  //     fx.base = response.data.base;
+  //   });
+  // }, []);
 
   useEffect(() => {
     try {
@@ -118,6 +118,13 @@ const SelectCountryConvertMoney: React.FC<Props> = ({
     []
   );
 
+  const handleInputValueSent = useCallback((e) => {
+    console.log(e.target.value);
+    if (e.target.value < 0) {
+      setValueToBeConverted(0);
+    } else setValueToBeConverted(e.target.value);
+  }, []);
+
   return (
     <>
       <SelectionsDiv>
@@ -154,9 +161,10 @@ const SelectCountryConvertMoney: React.FC<Props> = ({
           <h2>
             <input
               placeholder="22,124"
-              value={valueToBeConverted}
               type="number"
-              onChange={(e) => setValueToBeConverted(Number(e.target.value))}
+              min={0}
+              onChange={handleInputValueSent}
+              value={valueToBeConverted}
             />
             {selectedCountryFrom.value}
           </h2>
