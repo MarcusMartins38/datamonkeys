@@ -284,7 +284,6 @@ export const CalendarHeader = styled.div`
 
   span {
     display: flex;
-    position: relative;
 
     p {
       font-size: 18px;
@@ -301,13 +300,12 @@ export const CalendarHeader = styled.div`
       }
     }
 
-    #calendar {
-      color: transparent;
-      background-color: transparent;
-      width: 150px;
-      height: 10px;
+    .calendar {
+      position: absolute;
 
-      cursor: pointer;
+      margin-top: 32px;
+      background-color: white;
+      z-index: 1;
     }
   }
 `;

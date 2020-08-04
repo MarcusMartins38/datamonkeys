@@ -48,6 +48,8 @@ import {
 } from "./styles";
 import Axios from "axios";
 
+import Calendar from "../../components/Calendar";
+
 interface CountryData {
   label: string;
   id: string;
@@ -56,6 +58,7 @@ interface CountryData {
 }
 
 const Dashboard: React.FC = () => {
+  const [openCalendar, setOpenCalendar] = useState(false);
   const [countries, setCountries] = useState<CountryData[]>([]);
 
   const [selectedCountryFrom, setSelectedCountryFrom] = useState<CountryData>({
@@ -129,8 +132,23 @@ const Dashboard: React.FC = () => {
     []
   );
 
+  const toggleModal = useCallback((): void => {
+    // setOpenCalendar(!openCalendar);
+    if (openCalendar === true) {
+      setOpenCalendar(false);
+      console.log("Container Clique: ", openCalendar);
+    }
+
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, [openCalendar]);
+
+  // const [teste, setTeste] = useState(false);
+  // const testeCallParent = useCallback((dataFromChild) => {
+  //   setTeste(dataFromChild);
+  // }, [])
+
   return (
-    <Container>
+    <Container onClick={() => toggleModal()}>
       <LeftSideContainer>
         <ProfileInfo>
           <img
@@ -245,26 +263,13 @@ const Dashboard: React.FC = () => {
           <div>
             <span>Recipient gets</span>
             <h2>
-              <input value={convertedValue}></input> {selectedCountryTo.value}
+              <input readOnly value={convertedValue}></input>{" "}
+              {selectedCountryTo.value}
             </h2>
           </div>
         </ConvertedMoneyDiv>
 
-        <CalendarHeader>
-          <h2>Choose a plan:</h2>
-          <span>
-            <p>Choose the date:</p>
-            <FiCalendar size={24} />
-            <DatePicker
-              id="calendar"
-              bordered={false}
-              placeholder=""
-              style={{
-                position: "absolute",
-              }}
-            />
-          </span>
-        </CalendarHeader>
+        <Calendar isOpen={openCalendar} setIsOpen={toggleModal} />
 
         <ListOfPlans>
           <InputRadio>
