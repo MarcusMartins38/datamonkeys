@@ -3,7 +3,7 @@ import styled from "styled-components";
 export const Container = styled.div`
   width: 100%;
   /* max-width: 1440px; */
-  height: 100vh;
+  max-height: 100vh;
 
   margin: 0 auto;
 
@@ -18,6 +18,7 @@ export const LeftSideContainer = styled.div`
   height: 100%;
 
   margin: 63px auto 0 0;
+  left: 0;
 `;
 
 export const ProfileInfo = styled.div`
@@ -101,8 +102,9 @@ export const ServicesButtons = styled.div`
 export const MiddleSideContainer = styled.div`
   display: flex;
   flex-direction: column;
+  width: 100%;
 
-  max-width: 755px;
+  max-width: 630px;
 
   margin-top: 62px;
   margin-left: 50px;
@@ -148,12 +150,13 @@ export const SelectionsDiv = styled.div`
   display: flex;
   align-items: center;
   justify-content: space-between;
+  /* width: 100%; */
 
   div {
     display: flex;
     align-items: center;
-
-    width: 267px;
+    /* AQUI, COLOCAR MAX */
+    max-width: 267px;
     height: 53px;
 
     background: #f5f7fa;
@@ -161,13 +164,9 @@ export const SelectionsDiv = styled.div`
 
     border: 1px solid black;
 
-    & + div {
-      margin-left: 92px;
-    }
-
     p {
-      padding: 0 16px 0 16px;
-      margin-right: 30px;
+      margin-right: 16px;
+      margin-left: 16px;
 
       font-size: 16px;
       line-height: 19px;
@@ -187,6 +186,8 @@ export const SelectionsDiv = styled.div`
     select {
       width: 100%;
       height: 100%;
+
+      margin: 0 auto;
 
       background-color: transparent;
       border-radius: 8px;
@@ -209,14 +210,16 @@ export const ConvertedMoneyDiv = styled.div`
   justify-content: space-between;
 
   svg {
-    margin: 0 auto;
+    min-width: 24px;
+    min-height: 24px;
   }
 
   div {
     display: flex;
     flex-direction: column;
+    width: 100%;
 
-    width: 267px;
+    max-width: 267px;
     height: 128px;
 
     background: #f5f7fa;
@@ -414,6 +417,7 @@ export const InputRadio = styled.div`
 export const RightSideContainer = styled.div`
   margin: 0 auto;
   max-width: 400px;
+  width: 100%;
 `;
 
 export const RightSideButtons = styled.div`
@@ -439,9 +443,10 @@ export const RightSideButtons = styled.div`
 `;
 
 export const PaymentDetails = styled.div`
+  width: 100%;
   height: 100%;
 
-  width: 382px;
+  max-width: 382px;
   max-height: 642px;
 
   border: 2px solid #e4e7eb;
@@ -463,12 +468,17 @@ export const PaymentDetails = styled.div`
 export const MoneyConverted = styled.div`
   display: flex;
   align-items: center;
+  justify-content: space-between;
   height: 150px;
 
   border-bottom: 2px solid #e4e7eb;
 
   div:first-of-type {
     margin-left: 60px;
+  }
+
+  div:last-of-type {
+    margin-right: 60px;
   }
 
   p {
@@ -509,7 +519,7 @@ export const MoneyConverted = styled.div`
     background: #ffffff;
     box-shadow: 0px 2px 7px rgba(123, 135, 148, 0.28);
 
-    margin: 0 57px;
+    /* margin: 0 57px; */
 
     svg {
       margin: 0 auto;
