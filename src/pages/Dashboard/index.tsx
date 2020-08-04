@@ -1,13 +1,9 @@
-import React, { useEffect, useState, useCallback, ChangeEvent } from "react";
-
-import api from "../../services/api";
-import fx from "../../services/money";
+import React, { useEffect, useState, useCallback } from "react";
 
 import { format } from "date-fns";
 
 import {
   FiShuffle,
-  FiRefreshCcw,
   FiCalendar,
   FiArrowRight,
   FiFileText,
@@ -20,8 +16,6 @@ import {
   Container,
   MiddleSideContainer,
   MiddleHeader,
-  SelectionsDiv,
-  ConvertedMoneyDiv,
   ListOfPlans,
   InputRadio,
   RightSideContainer,
@@ -30,7 +24,6 @@ import {
   MoneyConverted,
   TransactionInfos,
 } from "./styles";
-import Axios from "axios";
 
 import Calendar from "../../components/Calendar";
 import LeftSideRouteButtons from "../../components/LeftSideRouteButtons";
