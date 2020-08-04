@@ -4,12 +4,7 @@ import { NavLink } from "react-router-dom";
 import api from "../../services/api";
 import fx from "../../services/money";
 
-import DayPicker from "react-day-picker";
-import DayPickerInput from "react-day-picker/DayPickerInput";
-import "react-day-picker/lib/style.css";
-
-import { DatePicker, Space } from "antd";
-import "antd/dist/antd.css";
+import { format } from "date-fns";
 
 import {
   FiGrid,
@@ -59,6 +54,14 @@ interface CountryData {
 
 const Dashboard: React.FC = () => {
   const [openCalendar, setOpenCalendar] = useState(false);
+  const [dateText, setDateText] = useState("");
+  const [detailDateText, setDetailDateText] = useState("");
+  const [radioButtonInfo, setRadioButtonInfo] = useState({
+    wichRadio: "option1",
+    plan: "Express",
+  });
+  const [datePayInfo, setDatePayInfo] = useState("");
+
   const [countries, setCountries] = useState<CountryData[]>([]);
 
   const [selectedCountryFrom, setSelectedCountryFrom] = useState<CountryData>({
@@ -106,6 +109,18 @@ const Dashboard: React.FC = () => {
     } catch (err) {}
   }, [selectedCountryFrom, selectedCountryTo, valueTobeConverted]);
 
+  useEffect(() => {
+    if (radioButtonInfo.wichRadio === "option1") {
+      setDetailDateText(datePayInfo + " till 12pm");
+    }
+    if (radioButtonInfo.wichRadio === "option2") {
+      setDetailDateText(datePayInfo + " till 6pm");
+    }
+    if (radioButtonInfo.wichRadio === "option3") {
+      setDetailDateText("Today till 8pm");
+    }
+  }, [datePayInfo, radioButtonInfo]);
+
   const handleSelectedCountryFrom = useCallback(
     (event: ChangeEvent<HTMLSelectElement>) => {
       const country = event.target.value;
@@ -138,14 +153,48 @@ const Dashboard: React.FC = () => {
       setOpenCalendar(false);
       console.log("Container Clique: ", openCalendar);
     }
-
-    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [openCalendar]);
 
-  // const [teste, setTeste] = useState(false);
-  // const testeCallParent = useCallback((dataFromChild) => {
-  //   setTeste(dataFromChild);
-  // }, [])
+  const selectedDateText = useCallback((dateChoose: Date) => {
+    setDateText(format(dateChoose, "dd MMMM yyyy"));
+    setDatePayInfo(format(dateChoose, "dd MMMM"));
+  }, []);
+
+  const handleRadioButton = useCallback((e) => {
+    if (e.target.value === "option1") {
+      setRadioButtonInfo({ wichRadio: "option1", plan: "Express" });
+    }
+    if (e.target.value === "option2") {
+      setRadioButtonInfo({ wichRadio: "option2", plan: "Standard" });
+    }
+    if (e.target.value === "option3") {
+      setRadioButtonInfo({
+        wichRadio: "option3",
+        plan: "Only on working days from 11am to 8pm",
+      });
+    }
+  }, []);
+
+  const handleButtonConfirm = useCallback(() => {
+    const timeSent = new Date(Date.now());
+
+    const sentAt = timeSent.toISOString();
+
+    const dataConfirmed = ` sentAt: "${sentAt}",
+    plan: "${radioButtonInfo.plan}",
+    sent: ${valueTobeConverted},
+    received: ${convertedValue},
+    from: "${selectedCountryFrom.value}",
+    to: "${selectedCountryTo.value}",`;
+
+    window.alert(dataConfirmed);
+  }, [
+    convertedValue,
+    radioButtonInfo.plan,
+    selectedCountryFrom.value,
+    selectedCountryTo.value,
+    valueTobeConverted,
+  ]);
 
   return (
     <Container onClick={() => toggleModal()}>
@@ -269,16 +318,26 @@ const Dashboard: React.FC = () => {
           </div>
         </ConvertedMoneyDiv>
 
-        <Calendar isOpen={openCalendar} setIsOpen={toggleModal} />
+        <Calendar
+          isOpen={openCalendar}
+          setIsOpen={toggleModal}
+          selectedDateText={selectedDateText}
+        />
 
-        <ListOfPlans>
+        <ListOfPlans onChange={handleRadioButton}>
           <InputRadio>
-            <input type="radio" name="option" id="option1" />
+            <input
+              type="radio"
+              name="option"
+              id="option1"
+              value="option1"
+              defaultChecked
+            />
             <label htmlFor="option1">
               <FiCheck />
 
               <div>
-                <p>Get 27 July 2020 till 12pm</p>
+                <p>Get {dateText} till 12pm</p>
                 <span>Express</span>
               </div>
 
@@ -287,30 +346,30 @@ const Dashboard: React.FC = () => {
           </InputRadio>
 
           <InputRadio>
-            <input type="radio" name="option" id="option2" />
+            <input type="radio" name="option" id="option2" value="option2" />
             <label htmlFor="option2">
               <FiCheck />
 
               <div>
-                <p>Get 27 July 2020 till 12pm</p>
-                <span>Express</span>
+                <p>Get {dateText} till 6pm</p>
+                <span>Standard</span>
               </div>
 
-              <strong>$ 0.99</strong>
+              <strong>$ 1.00</strong>
             </label>
           </InputRadio>
 
           <InputRadio>
-            <input type="radio" name="option" id="option3" />
+            <input type="radio" name="option" id="option3" value="option3" />
             <label htmlFor="option3">
               <FiCheck />
 
               <div>
-                <p>Get 27 July 2020 till 12pm</p>
-                <span>Express</span>
+                <p>Get today till 8pm</p>
+                <span>Only on working days from 11am to 8pm</span>
               </div>
 
-              <strong>$ 0.99</strong>
+              <strong>$ 1.00</strong>
             </label>
           </InputRadio>
         </ListOfPlans>
@@ -354,7 +413,7 @@ const Dashboard: React.FC = () => {
               <p>
                 <FiCalendar size={24} /> Delivery
               </p>
-              <strong>27 July till 12pm</strong>
+              <strong>{detailDateText}</strong>
             </div>
             <div>
               <p>
@@ -369,7 +428,7 @@ const Dashboard: React.FC = () => {
               <strong>{convertedValue}</strong>
             </div>
 
-            <button>Confirm</button>
+            <button onClick={handleButtonConfirm}>Confirm</button>
           </TransactionInfos>
         </PaymentDetails>
       </RightSideContainer>

@@ -176,8 +176,8 @@ export const SelectionsDiv = styled.div`
     }
 
     img {
-      width: 20px;
-      height: 20px;
+      width: 24px;
+      height: 24px;
 
       margin-right: 8px;
 
@@ -495,8 +495,8 @@ export const MoneyConverted = styled.div`
     color: #52606d;
     img {
       border-radius: 50%;
-      width: 12px;
-      height: 12px;
+      width: 14px;
+      height: 14px;
 
       margin-right: 8px;
     }
@@ -550,7 +550,6 @@ export const TransactionInfos = styled.div`
     font-weight: 600;
     font-size: 18px;
     line-height: 22px;
-
     color: #1f2933;
     max-width: 140px;
 
@@ -559,7 +558,9 @@ export const TransactionInfos = styled.div`
       display: none;
     }
 
-    margin-top: -10px;
+    &:first-of-type {
+      max-width: 210px;
+    }
   }
 
   button {

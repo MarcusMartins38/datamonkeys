@@ -1,29 +1,35 @@
-import React, { useState, useCallback, useEffect } from "react";
+import React, { useState, useCallback, useEffect, useMemo } from "react";
 
 import DayPicker, { DayModifiers } from "react-day-picker";
 import DayPickerInput from "react-day-picker/DayPickerInput";
 import "react-day-picker/lib/style.css";
 
+import { format } from "date-fns";
+
 import { FiCalendar } from "react-icons/fi";
 
 import { Container, CalendarHeader } from "./styles";
+import { ptBR } from "date-fns/locale";
 
 export interface Props {
   isOpen: boolean;
   setIsOpen: (data: boolean) => void;
+  selectedDateText: (dateChoose: Date) => void;
 }
 
-const Calendar: React.FC<Props> = ({ isOpen, setIsOpen }) => {
+const Calendar: React.FC<Props> = ({ isOpen, setIsOpen, selectedDateText }) => {
   const [openCalendar, setOpenCalendar] = useState(false);
 
   const [selectedDate, setSelectedDate] = useState(new Date());
-  const [currentMonth, setCurrentMonth] = useState(new Date());
 
   useEffect(() => {
     setOpenCalendar(isOpen);
     setIsOpen(isOpen);
-    console.log(setIsOpen);
   }, [isOpen, setIsOpen]);
+
+  useEffect(() => {
+    selectedDateText(selectedDate);
+  }, [selectedDate, selectedDateText]);
 
   const handleDateChange = useCallback(
     (day: Date, modifiers: DayModifiers) => {
@@ -33,12 +39,12 @@ const Calendar: React.FC<Props> = ({ isOpen, setIsOpen }) => {
     [selectedDate]
   );
 
-  const handleMonthChange = useCallback((month: Date) => {
-    setCurrentMonth(month);
-  }, []);
-
   return (
-    <CalendarHeader isOpen={openCalendar} setIsOpen={setIsOpen}>
+    <CalendarHeader
+      isOpen={openCalendar}
+      setIsOpen={setIsOpen}
+      selectedDateText={selectedDateText}
+    >
       <h2>Choose a plan:</h2>
       <span>
         <p>Choose the date:</p>
@@ -49,7 +55,6 @@ const Calendar: React.FC<Props> = ({ isOpen, setIsOpen }) => {
           modifiers={{
             available: { daysOfWeek: [0, 1, 2, 3, 4, 5, 6] },
           }}
-          onMonthChange={handleMonthChange}
           selectedDays={selectedDate}
           onDayClick={handleDateChange}
         />

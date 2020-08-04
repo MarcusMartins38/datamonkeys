@@ -44,10 +44,42 @@ export const CalendarHeader = styled.div<Props>`
       position: absolute;
 
       margin-top: 32px;
-      background-color: white;
       z-index: 1;
 
+      color: black;
+
       display: ${(props) => (props.isOpen ? "inline" : "none")};
+    }
+    .DayPicker {
+      background: white;
+      border-radius: 10px;
+    }
+
+    .DayPicker-Month {
+      border-collapse: separate;
+      border-spacing: 8px;
+      margin: 16px;
+    }
+    .DayPicker-Day {
+      width: 40px;
+      height: 40px;
+    }
+    .DayPicker-Day--available:not(.DayPicker-Day--outside) {
+      background: #f6f5f5;
+      border-radius: 10px;
+      color: black;
+    }
+    .DayPicker:not(.DayPicker--interactionDisabled)
+      .DayPicker-Day:not(.DayPicker-Day--disabled):not(.DayPicker-Day--selected):not(.DayPicker-Day--outside):hover {
+      background: #f68dbb;
+      color: white;
+    }
+
+    .DayPicker-Day--selected {
+      background: #f364a2 !important;
+      border-radius: 10px;
+      color: white !important;
+      font-weight: bold;
     }
   }
 `;
