@@ -22,8 +22,10 @@ const LeftSideRouteButtons: React.FC = () => {
           src="https://avatars0.githubusercontent.com/u/57776263?s=460&u=0492ca374347582300b38a8665c05574b329fec6&v=4"
           alt="perfil"
         />
-        <h2>Marcus Martins</h2>
-        <p>1231T233</p>
+        <div>
+          <h2>Marcus Martins</h2>
+          <p>1231T233</p>
+        </div>
       </ProfileInfo>
 
       <ServicesButtons>

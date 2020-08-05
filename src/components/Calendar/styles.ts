@@ -82,4 +82,18 @@ export const CalendarHeader = styled.div<Props>`
       font-weight: bold;
     }
   }
+
+  @media (max-width: 700px) {
+    flex-direction: column;
+
+    align-items: flex-start;
+
+    h2 {
+      margin-bottom: 16px;
+    }
+
+    p {
+      margin-bottom: 16px;
+    }
+  }
 `;

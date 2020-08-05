@@ -8,6 +8,10 @@ export const Container = styled.div`
   margin: 0 auto;
 
   display: flex;
+
+  @media (max-width: 700px) {
+    flex-direction: column;
+  }
 `;
 
 export const MiddleSideContainer = styled.div`
@@ -19,10 +23,18 @@ export const MiddleSideContainer = styled.div`
 
   margin-top: 62px;
   margin-left: 50px;
+
+  @media (max-width: 700px) {
+    margin-left: 0;
+  }
 `;
 
 export const MiddleHeader = styled.div`
   margin-bottom: 61px;
+
+  @media (max-width: 700px) {
+    margin-left: 40px;
+  }
 
   h1 {
     font-weight: 500;
@@ -53,173 +65,6 @@ export const MiddleHeader = styled.div`
 
         color: #f364a2;
       }
-    }
-  }
-`;
-
-export const SelectionsDiv = styled.div`
-  display: flex;
-  align-items: center;
-  justify-content: space-between;
-  /* width: 100%; */
-
-  div {
-    display: flex;
-    align-items: center;
-    /* AQUI, COLOCAR MAX */
-    max-width: 267px;
-    height: 53px;
-
-    background: #f5f7fa;
-    border-radius: 8px;
-
-    border: 1px solid black;
-
-    p {
-      margin-right: 16px;
-      margin-left: 16px;
-
-      font-size: 16px;
-      line-height: 19px;
-
-      color: #52606d;
-    }
-
-    img {
-      width: 24px;
-      height: 24px;
-
-      margin-right: 8px;
-
-      border-radius: 50%;
-    }
-
-    select {
-      width: 100%;
-      height: 100%;
-
-      margin: 0 auto;
-
-      background-color: transparent;
-      border-radius: 8px;
-
-      font-weight: 600;
-      font-size: 16px;
-      line-height: 19px;
-
-      color: #323f4b;
-    }
-  }
-`;
-
-export const ConvertedMoneyDiv = styled.div`
-  width: 100%;
-  margin-top: 28px;
-
-  display: flex;
-  align-items: center;
-  justify-content: space-between;
-
-  svg {
-    min-width: 24px;
-    min-height: 24px;
-  }
-
-  div {
-    display: flex;
-    flex-direction: column;
-    width: 100%;
-
-    max-width: 267px;
-    height: 128px;
-
-    background: #f5f7fa;
-    border-radius: 8px;
-    border: 1px solid black;
-
-    span {
-      margin: 27px auto 8px 26px;
-
-      font-size: 14px;
-      line-height: 17px;
-
-      color: #52606d;
-    }
-
-    input {
-      font-weight: 600;
-      font-size: 30px;
-      line-height: 36px;
-
-      margin-right: 10px;
-      color: #323f4b;
-
-      max-width: 97px;
-
-      background-color: transparent;
-    }
-
-    h2 {
-      margin: 0 auto 0 26px;
-
-      font-weight: 600;
-      font-size: 18px;
-      line-height: 22px;
-      color: #323f4b;
-
-      /* margin-right: 100px; */
-
-      strong {
-        font-weight: 600;
-        font-size: 30px;
-        line-height: 36px;
-
-        margin-right: 10px;
-      }
-    }
-  }
-`;
-
-export const CalendarHeader = styled.div`
-  display: flex;
-  align-items: center;
-  justify-content: space-between;
-
-  margin-top: 74px;
-  margin-bottom: 16px;
-
-  h2 {
-    font-weight: 500;
-    font-size: 24px;
-    line-height: 29px;
-
-    color: #1f2933;
-  }
-
-  span {
-    display: flex;
-
-    p {
-      font-size: 18px;
-      line-height: 22px;
-      margin-right: 13px;
-
-      color: #1f2933;
-    }
-
-    svg {
-      &:hover {
-        color: #f364a2;
-        cursor: pointer;
-      }
-    }
-
-    .calendar {
-      position: absolute;
-
-      margin-top: 32px;
-      background-color: white;
-      z-index: 1;
     }
   }
 `;
@@ -351,6 +196,10 @@ export const RightSideButtons = styled.div`
       margin-left: 27px;
     }
   }
+
+  @media (max-width: 700px) {
+    display: none;
+  }
 `;
 
 export const PaymentDetails = styled.div`
@@ -373,6 +222,12 @@ export const PaymentDetails = styled.div`
     color: #1f2933;
 
     margin: 40px 0 10px 40px;
+  }
+
+  @media (max-width: 700px) {
+    max-width: 340px;
+
+    margin: 0 auto 24px auto;
   }
 `;
 
@@ -504,6 +359,12 @@ export const TransactionInfos = styled.div`
     &:hover {
       width: 320px;
       height: 50px;
+    }
+  }
+
+  @media (max-width: 700px) {
+    button {
+      margin: 150px auto 24px auto;
     }
   }
 `;

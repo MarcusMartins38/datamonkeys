@@ -5,17 +5,23 @@ export const SelectionsDiv = styled.div`
   justify-content: space-between;
   /* width: 100%; */
 
+  @media (max-width: 700px) {
+    flex-direction: column;
+
+    div {
+      margin: 4px 0;
+      width: 100%;
+    }
+  }
+
   div {
     display: flex;
     align-items: center;
-    /* AQUI, COLOCAR MAX */
     max-width: 267px;
     height: 53px;
 
-    background: #f5f7fa;
+    background: #e8eced;
     border-radius: 8px;
-
-    border: 1px solid black;
 
     p {
       margin-right: 16px;
@@ -62,6 +68,15 @@ export const ConvertedMoneyDiv = styled.div`
   align-items: center;
   justify-content: space-between;
 
+  @media (max-width: 700px) {
+    flex-direction: column;
+
+    div {
+      margin: 4px 0;
+      width: 100%;
+    }
+  }
+
   svg {
     min-width: 24px;
     min-height: 24px;
@@ -75,9 +90,8 @@ export const ConvertedMoneyDiv = styled.div`
     max-width: 267px;
     height: 128px;
 
-    background: #f5f7fa;
+    background: #e8eced;
     border-radius: 8px;
-    border: 1px solid black;
 
     span {
       margin: 27px auto 8px 26px;

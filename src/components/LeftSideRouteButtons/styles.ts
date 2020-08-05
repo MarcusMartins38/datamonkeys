@@ -26,22 +26,42 @@ export const ProfileInfo = styled.div`
     margin-bottom: 19px;
   }
 
-  h2 {
-    font-weight: 600;
-    font-size: 24px;
-    line-height: 29px;
-    letter-spacing: 0.015em;
+  div {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
 
-    color: #1f2933;
+    h2 {
+      font-weight: 600;
+      font-size: 24px;
+      line-height: 29px;
+      letter-spacing: 0.015em;
 
-    margin-bottom: 7px;
+      color: #1f2933;
+
+      margin-bottom: 7px;
+    }
+
+    p {
+      font-size: 16px;
+      line-height: 19px;
+
+      color: #616e7c;
+    }
   }
 
-  p {
-    font-size: 16px;
-    line-height: 19px;
+  @media (max-width: 700px) {
+    flex-direction: row;
+    align-items: center;
+    margin-left: 20px;
 
-    color: #616e7c;
+    img {
+      margin-right: 10px;
+    }
+
+    div {
+      align-items: flex-start;
+    }
   }
 `;
 
@@ -85,5 +105,9 @@ export const ServicesButtons = styled.div`
         margin-right: 19px;
       }
     }
+  }
+
+  @media (max-width: 700px) {
+    display: none;
   }
 `;

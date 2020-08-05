@@ -8,7 +8,7 @@ export default createGlobalStyle`
   }
   html, body, #root {
     height: 100%;
-    background-color: #f6f5f5;
+    background-color: #F5F5F5;
   }
   *, button, input {
     border: 0;
