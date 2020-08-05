@@ -1,8 +1,9 @@
-import React from "react";
+import React, { useState } from "react";
 
 import { NavLink } from "react-router-dom";
 
 import {
+  FiAlignRight,
   FiGrid,
   FiRepeat,
   FiShuffle,
@@ -14,9 +15,15 @@ import {
 
 import { LeftSideContainer, ProfileInfo, ServicesButtons } from "./styles";
 
-const LeftSideRouteButtons: React.FC = () => {
+export interface Props {
+  showNav?: boolean;
+}
+
+const LeftSideRouteButtons: React.FC<Props> = ({ showNav }) => {
+  const [showNavButtons, setShowNavButtons] = useState(true);
+
   return (
-    <LeftSideContainer>
+    <LeftSideContainer showNav={showNavButtons}>
       <ProfileInfo>
         <img
           src="https://avatars0.githubusercontent.com/u/57776263?s=460&u=0492ca374347582300b38a8665c05574b329fec6&v=4"
@@ -28,7 +35,7 @@ const LeftSideRouteButtons: React.FC = () => {
         </div>
       </ProfileInfo>
 
-      <ServicesButtons>
+      <ServicesButtons showNav={showNavButtons}>
         <div>
           <NavLink to="/">
             <FiGrid size={18} />
@@ -71,6 +78,10 @@ const LeftSideRouteButtons: React.FC = () => {
           </NavLink>
         </div>
       </ServicesButtons>
+
+      <button onClick={() => setShowNavButtons(!showNavButtons)}>
+        <FiAlignRight size={32} />
+      </button>
     </LeftSideContainer>
   );
 };

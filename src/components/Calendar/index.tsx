@@ -1,15 +1,11 @@
-import React, { useState, useCallback, useEffect, useMemo } from "react";
+import React, { useState, useCallback, useEffect } from "react";
 
 import DayPicker, { DayModifiers } from "react-day-picker";
-import DayPickerInput from "react-day-picker/DayPickerInput";
 import "react-day-picker/lib/style.css";
-
-import { format } from "date-fns";
 
 import { FiCalendar } from "react-icons/fi";
 
-import { Container, CalendarHeader } from "./styles";
-import { ptBR } from "date-fns/locale";
+import { CalendarHeader } from "./styles";
 
 export interface Props {
   isOpen: boolean;

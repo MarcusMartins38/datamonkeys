@@ -168,6 +168,18 @@ export const InputRadio = styled.div`
       color: #1f2933;
     }
   }
+  @media (max-width: 700px) {
+    width: 340px;
+    margin: 0 auto 20px auto;
+
+    label {
+      strong {
+        width: 70px;
+        margin-right: 0;
+        margin-left: 10px;
+      }
+    }
+  }
 `;
 
 export const RightSideContainer = styled.div`

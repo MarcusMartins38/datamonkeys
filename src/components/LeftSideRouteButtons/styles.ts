@@ -1,5 +1,8 @@
 import styled from "styled-components";
-export const LeftSideContainer = styled.div`
+
+import { Props } from "./index";
+
+export const LeftSideContainer = styled.div<Props>`
   display: flex;
   flex-direction: column;
 
@@ -8,6 +11,32 @@ export const LeftSideContainer = styled.div`
 
   margin: 63px auto 0 0;
   left: 0;
+
+  button {
+    display: none;
+  }
+
+  @media (max-width: 700px) {
+    flex-direction: row;
+    align-items: center;
+    justify-content: space-between;
+    max-width: 600px;
+    width: 100%;
+    /* margin-left: 20px; */
+
+    button {
+      display: inline;
+      background: transparent;
+      border: 0;
+
+      margin-top: -24px;
+      margin-right: 16px;
+
+      svg {
+        color: ${(props) => (props.showNav ? "black" : "#e8368f")};
+      }
+    }
+  }
 `;
 
 export const ProfileInfo = styled.div`
@@ -61,11 +90,12 @@ export const ProfileInfo = styled.div`
 
     div {
       align-items: flex-start;
+      width: 230px;
     }
   }
 `;
 
-export const ServicesButtons = styled.div`
+export const ServicesButtons = styled.div<Props>`
   display: flex;
   flex-direction: column;
   height: 608px;
@@ -108,6 +138,23 @@ export const ServicesButtons = styled.div`
   }
 
   @media (max-width: 700px) {
-    display: none;
+    transform: ${(props) =>
+      props.showNav ? "translate(-100%)" : "translate(0)"};
+
+    transition: transform 0.5s;
+    position: fixed;
+    background-color: white;
+
+    width: 70%;
+    height: 100vh;
+
+    z-index: 1;
+
+    div:first-of-type {
+      margin-top: 200px;
+
+      a {
+      }
+    }
   }
 `;
