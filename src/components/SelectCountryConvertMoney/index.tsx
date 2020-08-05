@@ -119,7 +119,6 @@ const SelectCountryConvertMoney: React.FC<Props> = ({
   );
 
   const handleInputValueSent = useCallback((e) => {
-    console.log(e.target.value);
     if (e.target.value < 0) {
       setValueToBeConverted(0);
     } else setValueToBeConverted(e.target.value);

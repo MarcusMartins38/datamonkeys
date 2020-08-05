@@ -1,16 +1,8 @@
-import React, { useEffect, useState, useCallback } from "react";
+import React, { useState, useCallback } from "react";
 
 import { format } from "date-fns";
 
-import {
-  FiShuffle,
-  FiCalendar,
-  FiArrowRight,
-  FiFileText,
-  FiHelpCircle,
-  FiDollarSign,
-  FiCheck,
-} from "react-icons/fi";
+import { FiFileText, FiHelpCircle, FiCheck } from "react-icons/fi";
 
 import {
   Container,
@@ -20,14 +12,12 @@ import {
   InputRadio,
   RightSideContainer,
   RightSideButtons,
-  PaymentDetails,
-  MoneyConverted,
-  TransactionInfos,
 } from "./styles";
 
 import Calendar from "../../components/Calendar";
 import LeftSideRouteButtons from "../../components/LeftSideRouteButtons";
 import SelectCountryConvertMoney from "../../components/SelectCountryConvertMoney";
+import PaymentDetailsContainer from "../../components/PaymentDetails";
 
 interface CountryData {
   label: string;
@@ -46,12 +36,11 @@ interface DataCountryConvertMoney {
 const Dashboard: React.FC = () => {
   const [openCalendar, setOpenCalendar] = useState(false);
   const [dateText, setDateText] = useState("");
-  const [detailDateText, setDetailDateText] = useState("");
   const [radioButtonInfo, setRadioButtonInfo] = useState({
     wichRadio: "option1",
     plan: "Express",
   });
-  const [datePayInfo, setDatePayInfo] = useState("");
+  const [dateChooseCalendar, setDateChooseCalendar] = useState<Date>();
 
   const defaultCountry = {
     label: "Canada",
@@ -66,18 +55,6 @@ const Dashboard: React.FC = () => {
     valueToBeConverted: 0,
     convertedValue: 0,
   });
-
-  useEffect(() => {
-    if (radioButtonInfo.wichRadio === "option1") {
-      setDetailDateText(datePayInfo + " till 12pm");
-    }
-    if (radioButtonInfo.wichRadio === "option2") {
-      setDetailDateText(datePayInfo + " till 6pm");
-    }
-    if (radioButtonInfo.wichRadio === "option3") {
-      setDetailDateText("Today till 8pm");
-    }
-  }, [datePayInfo, radioButtonInfo]);
 
   const countryAndConvertedMoney = useCallback(
     (data: DataCountryConvertMoney) => {
@@ -95,7 +72,7 @@ const Dashboard: React.FC = () => {
 
   const selectedDateText = useCallback((dateChoose: Date) => {
     setDateText(format(dateChoose, "dd MMMM yyyy"));
-    setDatePayInfo(format(dateChoose, "dd MMMM"));
+    setDateChooseCalendar(dateChoose);
   }, []);
 
   const handleRadioButton = useCallback((e) => {
@@ -112,27 +89,6 @@ const Dashboard: React.FC = () => {
       });
     }
   }, []);
-
-  const handleButtonConfirm = useCallback(() => {
-    const timeSent = new Date(Date.now());
-
-    const sentAt = timeSent.toISOString();
-
-    const dataConfirmed = ` sentAt: "${sentAt}",
-    plan: "${radioButtonInfo.plan}",
-    sent: ${data.valueToBeConverted},
-    received: ${data.convertedValue},
-    from: "${data.selectedCountryFrom.value}",
-    to: "${data.selectedCountryTo.value}",`;
-
-    window.alert(dataConfirmed);
-  }, [
-    data.convertedValue,
-    data.selectedCountryFrom.value,
-    data.selectedCountryTo.value,
-    data.valueToBeConverted,
-    radioButtonInfo.plan,
-  ]);
 
   return (
     <Container onClick={() => toggleModal()}>
@@ -219,52 +175,11 @@ const Dashboard: React.FC = () => {
           </button>
         </RightSideButtons>
 
-        <PaymentDetails>
-          <h2>Payment Details</h2>
-
-          <MoneyConverted>
-            <div>
-              <p>{data.valueToBeConverted}</p>
-              <span>
-                <img src={data.selectedCountryFrom.flag} alt="flag" />
-                {data.selectedCountryFrom.value}
-              </span>
-            </div>
-            <button>
-              <FiArrowRight size={24} color="#1F2933" />
-            </button>
-            <div>
-              <p>{data.convertedValue}</p>
-              <span>
-                <img src={data.selectedCountryTo.flag} alt="flag" />
-                {data.selectedCountryTo.value}
-              </span>
-            </div>
-          </MoneyConverted>
-
-          <TransactionInfos>
-            <div>
-              <p>
-                <FiCalendar size={24} /> Delivery
-              </p>
-              <strong>{detailDateText}</strong>
-            </div>
-            <div>
-              <p>
-                <FiDollarSign size={24} /> Conversion rate
-              </p>
-              <strong>{data.valueToBeConverted}</strong>
-            </div>
-            <div>
-              <p>
-                <FiShuffle size={24} /> Recipient gets
-              </p>
-              <strong>{data.convertedValue}</strong>
-            </div>
-
-            <button onClick={handleButtonConfirm}>Confirm</button>
-          </TransactionInfos>
-        </PaymentDetails>
+        <PaymentDetailsContainer
+          radioButtonProps={radioButtonInfo}
+          dateChoose={dateChooseCalendar}
+          allData={data}
+        />
       </RightSideContainer>
     </Container>
   );
