@@ -5,15 +5,6 @@ export const SelectionsDiv = styled.div`
   justify-content: space-between;
   /* width: 100%; */
 
-  @media (max-width: 700px) {
-    flex-direction: column;
-
-    div {
-      margin: 4px 0;
-      width: 100%;
-    }
-  }
-
   div {
     display: flex;
     align-items: center;
@@ -24,6 +15,7 @@ export const SelectionsDiv = styled.div`
     border-radius: 8px;
 
     p {
+      width: 30px;
       margin-right: 16px;
       margin-left: 16px;
 
@@ -56,6 +48,20 @@ export const SelectionsDiv = styled.div`
       line-height: 19px;
 
       color: #323f4b;
+    }
+  }
+
+  @media (max-width: 700px) {
+    flex-direction: column;
+
+    div {
+      margin: 4px 0;
+      width: 100%;
+
+      div {
+        width: 70%;
+        margin: 0 auto;
+      }
     }
   }
 `;

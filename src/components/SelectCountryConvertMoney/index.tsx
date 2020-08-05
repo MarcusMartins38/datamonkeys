@@ -55,14 +55,14 @@ const SelectCountryConvertMoney: React.FC<Props> = ({
     });
   }, []);
 
-  // useEffect(() => {
-  //   Axios.get(
-  //     "https://openexchangerates.org/api/latest.json?app_id=f2d55242a75a4a8685d5c1c4c3c40bef"
-  //   ).then((response) => {
-  //     fx.rates = response.data.rates;
-  //     fx.base = response.data.base;
-  //   });
-  // }, []);
+  useEffect(() => {
+    Axios.get(
+      "https://openexchangerates.org/api/latest.json?app_id=f2d55242a75a4a8685d5c1c4c3c40bef"
+    ).then((response) => {
+      fx.rates = response.data.rates;
+      fx.base = response.data.base;
+    });
+  }, []);
 
   useEffect(() => {
     try {
@@ -130,28 +130,34 @@ const SelectCountryConvertMoney: React.FC<Props> = ({
       <SelectionsDiv>
         <div>
           <p>from:</p>
-          {selectedCountryFrom && (
-            <img src={selectedCountryFrom.flag} alt="flag" />
-          )}
-          <select onChange={handleSelectedCountryFrom}>
-            {countries.map((country) => (
-              <option key={country.id} value={country.label}>
-                {country.label}
-              </option>
-            ))}
-          </select>
+          <div>
+            {selectedCountryFrom && (
+              <img src={selectedCountryFrom.flag} alt="flag" />
+            )}
+            <select onChange={handleSelectedCountryFrom}>
+              {countries.map((country) => (
+                <option key={country.id} value={country.label}>
+                  {country.label}
+                </option>
+              ))}
+            </select>
+          </div>
         </div>
 
         <div>
           <p>to:</p>
-          {selectedCountryTo && <img src={selectedCountryTo.flag} alt="flag" />}
-          <select onChange={handleSelectedCountryTo}>
-            {countries.map((country) => (
-              <option key={country.id} value={country.label}>
-                {country.label}
-              </option>
-            ))}
-          </select>
+          <div>
+            {selectedCountryTo && (
+              <img src={selectedCountryTo.flag} alt="flag" />
+            )}
+            <select onChange={handleSelectedCountryTo}>
+              {countries.map((country) => (
+                <option key={country.id} value={country.label}>
+                  {country.label}
+                </option>
+              ))}
+            </select>
+          </div>
         </div>
       </SelectionsDiv>
 

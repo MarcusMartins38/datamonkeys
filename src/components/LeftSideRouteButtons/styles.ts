@@ -98,6 +98,7 @@ export const ProfileInfo = styled.div`
 export const ServicesButtons = styled.div<Props>`
   display: flex;
   flex-direction: column;
+
   height: 608px;
   margin-top: 15px;
 
@@ -146,15 +147,14 @@ export const ServicesButtons = styled.div<Props>`
     background-color: white;
 
     width: 70%;
-    height: 100vh;
+    height: 100%;
+
+    justify-content: center;
 
     z-index: 1;
 
     div:first-of-type {
       margin-top: 200px;
-
-      a {
-      }
     }
   }
 `;
