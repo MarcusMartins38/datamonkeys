@@ -131,7 +131,7 @@ const SelectCountryConvertMoney: React.FC<Props> = ({
     <Container onClick={onClick}>
       <SelectionsDiv>
         <div>
-          <p>from:</p>
+          <p>From:</p>
           <div>
             {selectedCountryFrom && (
               <img src={selectedCountryFrom.flag} alt="flag" />
@@ -147,7 +147,7 @@ const SelectCountryConvertMoney: React.FC<Props> = ({
         </div>
 
         <div>
-          <p>to:</p>
+          <p>To:</p>
           <div>
             {selectedCountryTo && (
               <img src={selectedCountryTo.flag} alt="flag" />
