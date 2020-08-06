@@ -64,14 +64,14 @@ const SelectCountryConvertMoney: React.FC<Props> = ({
     });
   }, []);
 
-  // useEffect(() => {
-  //   Axios.get(
-  //     "https://openexchangerates.org/api/latest.json?app_id=f2d55242a75a4a8685d5c1c4c3c40bef"
-  //   ).then((response) => {
-  //     fx.rates = response.data.rates;
-  //     fx.base = response.data.base;
-  //   });
-  // }, []);
+  useEffect(() => {
+    Axios.get(
+      "https://openexchangerates.org/api/latest.json?app_id=f2d55242a75a4a8685d5c1c4c3c40bef"
+    ).then((response) => {
+      fx.rates = response.data.rates;
+      fx.base = response.data.base;
+    });
+  }, []);
 
   useEffect(() => {
     try {
