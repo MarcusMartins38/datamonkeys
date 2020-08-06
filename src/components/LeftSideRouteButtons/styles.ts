@@ -22,10 +22,9 @@ export const LeftSideContainer = styled.div<Props>`
     justify-content: space-between;
     max-width: 600px;
     width: 100%;
-    /* margin-left: 20px; */
 
     button {
-      display: inline;
+      display: block;
       background: transparent;
       border: 0;
 

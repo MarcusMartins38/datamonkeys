@@ -1,12 +1,12 @@
 import React from "react";
 import { Route, BrowserRouter } from "react-router-dom";
 
-import Dashboard from "../pages/Dashboard";
+import SendMoney from "../pages/SendMoney";
 
 const Routes = () => {
   return (
     <BrowserRouter>
-      <Route component={Dashboard} exact path="/" />
+      <Route component={SendMoney} exact path="/" />
     </BrowserRouter>
   );
 };

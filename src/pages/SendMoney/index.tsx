@@ -33,7 +33,7 @@ interface DataCountryConvertMoney {
   convertedValue: number;
 }
 
-const Dashboard: React.FC = () => {
+const SendMoney: React.FC = () => {
   const [openCalendar, setOpenCalendar] = useState(false);
   const [dateText, setDateText] = useState("");
   const [radioButtonInfo, setRadioButtonInfo] = useState({
@@ -192,4 +192,4 @@ const Dashboard: React.FC = () => {
   );
 };
 
-export default Dashboard;
+export default SendMoney;

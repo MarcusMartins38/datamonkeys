@@ -24,6 +24,14 @@ export const MiddleSideContainer = styled.div`
   margin-top: 62px;
   margin-left: 50px;
 
+  h2 {
+    font-weight: 500;
+    font-size: 24px;
+    line-height: 29px;
+
+    color: #1f2933;
+  }
+
   @media (max-width: 700px) {
     margin-left: 0;
   }
@@ -203,6 +211,12 @@ export const RightSideButtons = styled.div`
 
     background: #ffffff;
     box-shadow: 0px 2px 7px rgba(123, 135, 148, 0.28);
+
+    transition: transform 0.5s;
+
+    &:hover {
+      transform: translate(0, -10%);
+    }
 
     & + button {
       margin-left: 27px;

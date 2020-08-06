@@ -130,7 +130,7 @@ const SelectCountryConvertMoney: React.FC<Props> = ({
   return (
     <Container onClick={onClick}>
       <SelectionsDiv>
-        <div>
+        <div id="selectionCountryDiv">
           <p>From:</p>
           <div>
             {selectedCountryFrom && (
@@ -146,7 +146,27 @@ const SelectCountryConvertMoney: React.FC<Props> = ({
           </div>
         </div>
 
-        <div>
+        <ConvertedMoneyDiv>
+          <div>
+            <span>You send</span>
+            <h2>
+              <input
+                placeholder="22,124"
+                type="number"
+                min={0}
+                onChange={handleInputValueSent}
+                value={valueToBeConverted}
+              />
+              {selectedCountryFrom.value}
+            </h2>
+          </div>
+        </ConvertedMoneyDiv>
+      </SelectionsDiv>
+
+      <FiRefreshCcw size={18} color="#f364a2" />
+
+      <SelectionsDiv>
+        <div id="selectionCountryDiv">
           <p>To:</p>
           <div>
             {selectedCountryTo && (
@@ -161,33 +181,17 @@ const SelectCountryConvertMoney: React.FC<Props> = ({
             </select>
           </div>
         </div>
+
+        <ConvertedMoneyDiv>
+          <div>
+            <span>Recipient gets</span>
+            <h2>
+              <input readOnly value={convertedValue}></input>{" "}
+              {selectedCountryTo.value}
+            </h2>
+          </div>
+        </ConvertedMoneyDiv>
       </SelectionsDiv>
-
-      <ConvertedMoneyDiv>
-        <div>
-          <span>You send</span>
-          <h2>
-            <input
-              placeholder="22,124"
-              type="number"
-              min={0}
-              onChange={handleInputValueSent}
-              value={valueToBeConverted}
-            />
-            {selectedCountryFrom.value}
-          </h2>
-        </div>
-
-        <FiRefreshCcw size={18} color="#f364a2" />
-
-        <div>
-          <span>Recipient gets</span>
-          <h2>
-            <input readOnly value={convertedValue}></input>{" "}
-            {selectedCountryTo.value}
-          </h2>
-        </div>
-      </ConvertedMoneyDiv>
     </Container>
   );
 };

@@ -1,13 +1,35 @@
 import styled from "styled-components";
 
-export const Container = styled.div``;
+export const Container = styled.div`
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+
+  svg {
+    min-width: 24px;
+    min-height: 24px;
+    margin-top: 100px;
+  }
+
+  @media (max-width: 700px) {
+    flex-direction: column;
+
+    svg {
+      min-width: 24px;
+      min-height: 24px;
+      margin-top: 50px;
+      margin-bottom: 50px;
+    }
+  }
+`;
 
 export const SelectionsDiv = styled.div`
   display: flex;
   align-items: center;
+  flex-direction: column;
   justify-content: space-between;
 
-  div {
+  #selectionCountryDiv {
     display: flex;
     align-items: center;
     max-width: 267px;
@@ -15,6 +37,11 @@ export const SelectionsDiv = styled.div`
 
     background: #e8eced;
     border-radius: 8px;
+
+    div {
+      display: flex;
+      align-items: center;
+    }
 
     p {
       width: 40px;
@@ -41,6 +68,7 @@ export const SelectionsDiv = styled.div`
       height: 100%;
 
       margin: 0 auto;
+      padding: 10%;
 
       background-color: transparent;
       border-radius: 8px;
@@ -52,43 +80,11 @@ export const SelectionsDiv = styled.div`
       color: #323f4b;
     }
   }
-
-  @media (max-width: 700px) {
-    flex-direction: column;
-
-    div {
-      margin: 4px 0;
-      width: 100%;
-
-      div {
-        width: 70%;
-        margin: 0 auto;
-      }
-    }
-  }
 `;
 
 export const ConvertedMoneyDiv = styled.div`
   width: 100%;
   margin-top: 28px;
-
-  display: flex;
-  align-items: center;
-  justify-content: space-between;
-
-  @media (max-width: 700px) {
-    flex-direction: column;
-
-    div {
-      margin: 4px 0;
-      width: 100%;
-    }
-  }
-
-  svg {
-    min-width: 24px;
-    min-height: 24px;
-  }
 
   div {
     display: flex;
@@ -140,6 +136,15 @@ export const ConvertedMoneyDiv = styled.div`
 
         margin-right: 10px;
       }
+    }
+  }
+
+  @media (max-width: 700px) {
+    flex-direction: column;
+
+    div {
+      /* margin: 4px 0; */
+      width: 100%;
     }
   }
 `;

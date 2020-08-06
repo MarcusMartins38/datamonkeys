@@ -33,6 +33,7 @@ export const CalendarHeader = styled.div<Props>`
 
     svg {
       color: ${(props) => (props.isOpen ? "#f364a2" : "")};
+      transition: color 0.5s;
 
       &:hover {
         color: #f364a2;
