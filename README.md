@@ -1,8 +1,8 @@
 # datamonkeys
 
 <p align="center">
-<img src="./.github/HomeLigth.png" width=450 align="center" />
-<img src="./.github/HomeDark.png" width=450 align="center" />
+<img src="./.github/HomeLigth.png" width=400 align="center" />
+<img src="./.github/HomeDark.png" width=400 align="center" />
 </p>
 
 ## Passo a passo
@@ -23,3 +23,6 @@ $ npm install
 $ npm start
 ```
 
+### Or you can access the Deploy
+
+https://keen-perlman-39eb80.netlify.app
