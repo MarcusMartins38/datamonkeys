@@ -5,7 +5,7 @@ import api from "../../services/api";
 
 import { FiRefreshCcw } from "react-icons/fi";
 
-import { SelectionsDiv, ConvertedMoneyDiv } from "./styles";
+import { Container, SelectionsDiv, ConvertedMoneyDiv } from "./styles";
 
 import Axios from "axios";
 
@@ -25,26 +25,29 @@ interface DataCountryConvertMoney {
 
 interface Props {
   countryAndConvertedMoney: (data: DataCountryConvertMoney) => void;
+  onClick: () => void;
 }
 
 const SelectCountryConvertMoney: React.FC<Props> = ({
   countryAndConvertedMoney,
+  onClick,
 }) => {
   const [countries, setCountries] = useState<CountryData[]>([]);
 
-  const [selectedCountryFrom, setSelectedCountryFrom] = useState<CountryData>({
+  const defaultCountryValue = {
     label: "Canada",
     id: "CAD",
     value: "CAD",
     flag: "https://www.countryflags.io/ca/flat/64.png",
-  });
+  };
 
-  const [selectedCountryTo, setSelectedCountryTo] = useState<CountryData>({
-    label: "Canada",
-    id: "CAD",
-    value: "CAD",
-    flag: "https://www.countryflags.io/ca/flat/64.png",
-  });
+  const [selectedCountryFrom, setSelectedCountryFrom] = useState<CountryData>(
+    defaultCountryValue
+  );
+
+  const [selectedCountryTo, setSelectedCountryTo] = useState<CountryData>(
+    defaultCountryValue
+  );
 
   const [valueToBeConverted, setValueToBeConverted] = useState(0);
   const [convertedValue, setConvertedValue] = useState(0);
@@ -125,7 +128,7 @@ const SelectCountryConvertMoney: React.FC<Props> = ({
   }, []);
 
   return (
-    <>
+    <Container onClick={onClick}>
       <SelectionsDiv>
         <div>
           <p>from:</p>
@@ -185,7 +188,7 @@ const SelectCountryConvertMoney: React.FC<Props> = ({
           </h2>
         </div>
       </ConvertedMoneyDiv>
-    </>
+    </Container>
   );
 };
 

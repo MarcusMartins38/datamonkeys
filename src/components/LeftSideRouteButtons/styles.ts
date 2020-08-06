@@ -140,7 +140,7 @@ export const ServicesButtons = styled.div<Props>`
 
   @media (max-width: 700px) {
     transform: ${(props) =>
-      props.showNav ? "translate(-100%)" : "translate(0)"};
+      props.showNav ? "translate(-150%)" : "translate(0)"};
 
     transition: transform 0.5s;
     position: fixed;

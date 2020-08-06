@@ -9,19 +9,22 @@ import { CalendarHeader } from "./styles";
 
 export interface Props {
   isOpen: boolean;
-  setIsOpen: (data: boolean) => void;
+  toggleModal: (calendarOpened: boolean) => void;
   selectedDateText: (dateChoose: Date) => void;
 }
 
-const Calendar: React.FC<Props> = ({ isOpen, setIsOpen, selectedDateText }) => {
+const Calendar: React.FC<Props> = ({
+  isOpen,
+  toggleModal,
+  selectedDateText,
+}) => {
   const [openCalendar, setOpenCalendar] = useState(false);
 
   const [selectedDate, setSelectedDate] = useState(new Date());
 
   useEffect(() => {
     setOpenCalendar(isOpen);
-    setIsOpen(isOpen);
-  }, [isOpen, setIsOpen]);
+  }, [isOpen]);
 
   useEffect(() => {
     selectedDateText(selectedDate);
@@ -35,16 +38,21 @@ const Calendar: React.FC<Props> = ({ isOpen, setIsOpen, selectedDateText }) => {
     [selectedDate]
   );
 
+  const handleOpenCalendar = useCallback(() => {
+    setOpenCalendar(!openCalendar);
+    toggleModal(!openCalendar);
+  }, [openCalendar, toggleModal]);
+
   return (
     <CalendarHeader
       isOpen={openCalendar}
-      setIsOpen={setIsOpen}
       selectedDateText={selectedDateText}
+      toggleModal={toggleModal}
     >
       <h2>Choose a plan:</h2>
       <span>
         <p>Choose the date:</p>
-        <FiCalendar size={24} onClick={() => setOpenCalendar(!openCalendar)} />
+        <FiCalendar size={24} onClick={handleOpenCalendar} />
         <DayPicker
           className="calendar"
           fromMonth={new Date()}

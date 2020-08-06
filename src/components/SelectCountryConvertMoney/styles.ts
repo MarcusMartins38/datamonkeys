@@ -1,9 +1,11 @@
 import styled from "styled-components";
+
+export const Container = styled.div``;
+
 export const SelectionsDiv = styled.div`
   display: flex;
   align-items: center;
   justify-content: space-between;
-  /* width: 100%; */
 
   div {
     display: flex;
@@ -15,7 +17,7 @@ export const SelectionsDiv = styled.div`
     border-radius: 8px;
 
     p {
-      width: 30px;
+      width: 40px;
       margin-right: 16px;
       margin-left: 16px;
 

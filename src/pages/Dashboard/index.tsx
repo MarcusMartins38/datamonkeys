@@ -57,14 +57,17 @@ const Dashboard: React.FC = () => {
   });
 
   const countryAndConvertedMoney = useCallback(
-    (data: DataCountryConvertMoney) => {
-      setData(data);
+    (dataFromChild: DataCountryConvertMoney) => {
+      setData(dataFromChild);
     },
     []
   );
 
-  const toggleModal = useCallback((): void => {
-    // setOpenCalendar(!openCalendar);
+  const toggleModal = useCallback((calendarOpened: boolean): void => {
+    setOpenCalendar(calendarOpened);
+  }, []);
+
+  const handleClickOnContainer = useCallback(() => {
     if (openCalendar === true) {
       setOpenCalendar(false);
     }
@@ -91,8 +94,8 @@ const Dashboard: React.FC = () => {
   }, []);
 
   return (
-    <Container onClick={() => toggleModal()}>
-      <LeftSideRouteButtons />
+    <Container>
+      <LeftSideRouteButtons onClick={handleClickOnContainer} />
 
       <MiddleSideContainer>
         <MiddleHeader>
@@ -105,16 +108,20 @@ const Dashboard: React.FC = () => {
         </MiddleHeader>
 
         <SelectCountryConvertMoney
+          onClick={handleClickOnContainer}
           countryAndConvertedMoney={countryAndConvertedMoney}
         />
 
         <Calendar
           isOpen={openCalendar}
-          setIsOpen={toggleModal}
+          toggleModal={toggleModal}
           selectedDateText={selectedDateText}
         />
 
-        <ListOfPlans onChange={handleRadioButton}>
+        <ListOfPlans
+          onChange={handleRadioButton}
+          onClick={handleClickOnContainer}
+        >
           <InputRadio>
             <input
               type="radio"
@@ -165,7 +172,7 @@ const Dashboard: React.FC = () => {
         </ListOfPlans>
       </MiddleSideContainer>
 
-      <RightSideContainer>
+      <RightSideContainer onClick={handleClickOnContainer}>
         <RightSideButtons>
           <button>
             <FiFileText size={24} color="#1F2933" />
