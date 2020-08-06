@@ -1,4 +1,5 @@
 import React, { useState } from "react";
+import ToggleThemeButton from "../../components/ToggleThemeButton";
 
 import { NavLink } from "react-router-dom";
 
@@ -83,6 +84,8 @@ const LeftSideRouteButtons: React.FC<Props> = ({ showNav, onClick }) => {
             <FiLogOut size={18} />
             Log Out
           </NavLink>
+
+          <ToggleThemeButton id="svgThemeChange" />
         </div>
       </ServicesButtons>
 

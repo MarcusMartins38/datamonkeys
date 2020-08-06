@@ -17,7 +17,7 @@ export const PaymentDetails = styled.div`
     line-height: 29px;
     letter-spacing: 0.015em;
 
-    color: #1f2933;
+    color: ${(props) => props.theme.colors.paymentH?.text};
 
     margin: 40px 0 10px 40px;
   }
@@ -50,7 +50,7 @@ export const MoneyConverted = styled.div`
     font-size: 18px;
     line-height: 22px;
     text-align: right;
-    color: #1f2933;
+    color: ${(props) => props.theme.colors.p?.text};
 
     max-width: 60px;
     margin-bottom: 0px;
@@ -66,13 +66,15 @@ export const MoneyConverted = styled.div`
     line-height: 17px;
     margin-left: 8px;
 
-    color: #52606d;
+    color: ${(props) => props.theme.colors.paymentSpan?.text};
     img {
       border-radius: 50%;
       width: 14px;
       height: 14px;
 
       margin-right: 8px;
+
+      color: ${(props) => props.theme.colors.p?.text};
     }
   }
 
@@ -82,8 +84,6 @@ export const MoneyConverted = styled.div`
     height: 36px;
     background: #ffffff;
     box-shadow: 0px 2px 7px rgba(123, 135, 148, 0.28);
-
-    /* margin: 0 57px; */
 
     svg {
       margin: 0 auto;
@@ -112,7 +112,7 @@ export const TransactionInfos = styled.div`
       font-size: 17px;
       line-height: 21px;
 
-      color: #3e4c59;
+      color: ${(props) => props.theme.colors.inputP?.text};
 
       svg {
         margin-right: 18px;
@@ -124,7 +124,7 @@ export const TransactionInfos = styled.div`
     font-weight: 600;
     font-size: 18px;
     line-height: 22px;
-    color: #1f2933;
+    color: ${(props) => props.theme.colors.inputStrong?.text};
     max-width: 140px;
 
     overflow-x: scroll;

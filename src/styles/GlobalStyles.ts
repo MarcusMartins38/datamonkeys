@@ -8,7 +8,7 @@ export default createGlobalStyle`
   }
   html, body, #root {
     height: 100%;
-    background-color: #F5F5F5;
+    background-color: ${(props) => props.theme.colors.body.background};
   }
   *, button, input {
     border: 0;
@@ -19,6 +19,7 @@ export default createGlobalStyle`
 
   button, input, label, select {
     cursor: pointer;
-
   }
+
+  
 `;

@@ -17,7 +17,7 @@ export const CalendarHeader = styled.div<Props>`
     font-size: 24px;
     line-height: 29px;
 
-    color: #1f2933;
+    color: ${(props) => props.theme.colors.h1?.text};
   }
 
   span {
@@ -28,11 +28,12 @@ export const CalendarHeader = styled.div<Props>`
       line-height: 22px;
       margin-right: 13px;
 
-      color: #1f2933;
+      color: ${(props) => props.theme.colors.p?.text};
     }
 
     svg {
-      color: ${(props) => (props.isOpen ? "#f364a2" : "")};
+      color: ${(props) =>
+        props.isOpen ? "#f364a2" : props.theme.colors.a?.text};
       transition: color 0.5s;
 
       &:hover {

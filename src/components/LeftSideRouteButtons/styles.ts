@@ -65,7 +65,7 @@ export const ProfileInfo = styled.div`
       line-height: 29px;
       letter-spacing: 0.015em;
 
-      color: #1f2933;
+      color: ${(props) => props.theme.colors.h1.text};
 
       margin-bottom: 7px;
     }
@@ -120,7 +120,7 @@ export const ServicesButtons = styled.div<Props>`
       line-height: 19px;
       letter-spacing: 0.015em;
 
-      color: #1f2933;
+      color: ${(props) => props.theme.colors.a?.text};
 
       transition: color 0.5s, border-left 1s;
 
@@ -137,23 +137,40 @@ export const ServicesButtons = styled.div<Props>`
     }
   }
 
+  #svgThemeChange {
+    color: ${(props) => props.theme.colors.a?.text};
+    margin: 0 auto;
+    transform: translate(0, 150%);
+    cursor: pointer;
+
+    transition: color 0.5s;
+
+    &:hover {
+      color: #e8368f;
+    }
+  }
+
   @media (max-width: 700px) {
     transform: ${(props) =>
       props.showNav ? "translate(-150%)" : "translate(0)"};
 
     transition: transform 0.5s;
     position: fixed;
-    background-color: white;
+    background-color: ${(props) => props.theme.colors.body.background};
 
     width: 70%;
-    height: 100%;
+    height: 110%;
 
     justify-content: center;
 
     z-index: 1;
 
     div:first-of-type {
-      margin-top: 200px;
+      margin-top: 220px;
+    }
+
+    #svgThemeChange {
+      transform: translate(0, 30%);
     }
   }
 `;

@@ -29,7 +29,7 @@ export const MiddleSideContainer = styled.div`
     font-size: 24px;
     line-height: 29px;
 
-    color: #1f2933;
+    color: ${(props) => props.theme.colors.h1?.text};
   }
 
   @media (max-width: 700px) {
@@ -49,7 +49,7 @@ export const MiddleHeader = styled.div`
     font-size: 30px;
     line-height: 36px;
 
-    color: #1f2933;
+    color: ${(props) => props.theme.colors.h1?.text};
   }
 
   div {
@@ -112,6 +112,12 @@ export const InputRadio = styled.div`
     svg {
       display: block;
     }
+
+    p,
+    strong,
+    span {
+      color: ${(props) => (props ? props.theme.colors.inputChecked?.text : "")};
+    }
   }
 
   svg {
@@ -154,14 +160,14 @@ export const InputRadio = styled.div`
       font-size: 18px;
       line-height: 22px;
 
-      color: #3e4c59;
+      color: ${(props) => props.theme.colors.inputP?.text};
     }
 
     span {
       font-size: 14px;
       line-height: 17px;
 
-      color: #616e7c;
+      color: ${(props) => props.theme.colors.inputP?.text};
     }
 
     strong {
@@ -173,7 +179,7 @@ export const InputRadio = styled.div`
       margin-right: 33px;
       /* margin-top: 8px; */
 
-      color: #1f2933;
+      color: ${(props) => props.theme.colors.inputStrong?.text};
     }
   }
   @media (max-width: 700px) {
