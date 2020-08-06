@@ -35,6 +35,13 @@ interface Props {
   allData: DataCountryConvertMoney;
 }
 
+/**
+ * Container of Payment Details
+ * @constructor
+ * @param {radioButtonProps} radioButtonProps -  Know wich Radio Button was selected
+ * @param {Date} dateChoose - Know what day was selected at calendar
+ * @param {DataCountryConvertMoney} allData - All data formatted to show at PaymentDetails and confirm button
+ */
 const PaymentDetailsContainer: React.FC<Props> = ({
   radioButtonProps,
   dateChoose,
@@ -82,6 +89,10 @@ const PaymentDetailsContainer: React.FC<Props> = ({
     }
   }, [datePayInfo, radioButtonInfo]);
 
+  /**
+   * Action of button confirm clicked
+   * @function
+   */
   const handleButtonConfirm = useCallback(() => {
     const timeSent = new Date(Date.now());
 

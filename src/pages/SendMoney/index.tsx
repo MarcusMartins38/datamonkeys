@@ -49,6 +49,10 @@ const SendMoney: React.FC = () => {
     flag: "https://www.countryflags.io/ca/flat/64.png",
   };
 
+  /**
+   * Constant that stores all formatted data, to pass to a Component that needs
+   * @constant
+   */
   const [data, setData] = useState<DataCountryConvertMoney>({
     selectedCountryFrom: defaultCountry,
     selectedCountryTo: defaultCountry,
@@ -56,6 +60,11 @@ const SendMoney: React.FC = () => {
     convertedValue: 0,
   });
 
+  /**
+   * Function to take the Data from a component and pass to another
+   * @function
+   * @param {DataCountryConvertMoney} dataFromChild - All Data formatted, to pass to PaymentDetails
+   */
   const countryAndConvertedMoney = useCallback(
     (dataFromChild: DataCountryConvertMoney) => {
       setData(dataFromChild);
@@ -63,21 +72,40 @@ const SendMoney: React.FC = () => {
     []
   );
 
+  /**
+   * Function to know if the calendar is open
+   * @function
+   * @param {boolean} calendarOpened - Boolean data, to know if Calendar is open or not
+   */
   const toggleModal = useCallback((calendarOpened: boolean): void => {
     setOpenCalendar(calendarOpened);
   }, []);
 
+  /**
+   * Function to know if the container was clicked with Calendar Open
+   * @function
+   */
   const handleClickOnContainer = useCallback(() => {
     if (openCalendar === true) {
       setOpenCalendar(false);
     }
   }, [openCalendar]);
 
+  /**
+   * Function to receive the Date from Calendar to format it
+   * @function
+   * @param {Date} dateChoose - The Date from calendar
+   */
   const selectedDateText = useCallback((dateChoose: Date) => {
     setDateText(format(dateChoose, "dd MMMM yyyy"));
     setDateChooseCalendar(dateChoose);
   }, []);
 
+  /**
+   * Function to Handle the Radio selected
+   * @function
+   * @param {ChangeEvent} e - The input radio that was selected
+   */
   const handleRadioButton = useCallback((e) => {
     if (e.target.value === "option1") {
       setRadioButtonInfo({ wichRadio: "option1", plan: "Express" });

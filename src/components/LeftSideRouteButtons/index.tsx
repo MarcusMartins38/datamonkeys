@@ -20,6 +20,12 @@ export interface Props {
   onClick?: () => void;
 }
 
+/**
+ * Perfil on leftTop and List of NavButtons
+ * @constructor
+ * @param {boolean} showNav -  Responsive Layout: show the list of NavButtons
+ * @param {() => void} onClick - Just to know if this container was clicked (To close the calendar)
+ */
 const LeftSideRouteButtons: React.FC<Props> = ({ showNav, onClick }) => {
   const [showNavButtons, setShowNavButtons] = useState(true);
 

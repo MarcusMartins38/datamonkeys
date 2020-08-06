@@ -28,6 +28,12 @@ interface Props {
   onClick: () => void;
 }
 
+/**
+ * Select the country from/to, and convert money from/to
+ * @constructor
+ * @param {(DataCountryConvertMoney) => void} countryAndConvertedMoney -  Pass all data already formatted
+ * @param {() => void} onClick - Just to know if this container was clicked (To close the calendar)
+ */
 const SelectCountryConvertMoney: React.FC<Props> = ({
   countryAndConvertedMoney,
   onClick,
@@ -95,6 +101,11 @@ const SelectCountryConvertMoney: React.FC<Props> = ({
     valueToBeConverted,
   ]);
 
+  /**
+   * Function to handle with select country 'from'
+   * @function
+   * @param {ChangeEvent<HTMLSelectElement>} event - Take the value that was selected
+   */
   const handleSelectedCountryFrom = useCallback(
     (event: ChangeEvent<HTMLSelectElement>) => {
       const country = event.target.value;
@@ -108,6 +119,11 @@ const SelectCountryConvertMoney: React.FC<Props> = ({
     []
   );
 
+  /**
+   * Function to handle with select country 'to'
+   * @function
+   * @param {ChangeEvent<HTMLSelectElement>} event - Take the value that was selected
+   */
   const handleSelectedCountryTo = useCallback(
     (event: ChangeEvent<HTMLSelectElement>) => {
       const country = event.target.value;
@@ -121,6 +137,11 @@ const SelectCountryConvertMoney: React.FC<Props> = ({
     []
   );
 
+  /**
+   * Take the value that will be convert
+   * @function
+   * @param {ChangeEvent} e - The value that will be convert
+   */
   const handleInputValueSent = useCallback((e) => {
     if (e.target.value < 0) {
       setValueToBeConverted(0);

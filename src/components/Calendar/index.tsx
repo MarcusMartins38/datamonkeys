@@ -1,6 +1,6 @@
 import React, { useState, useCallback, useEffect } from "react";
 
-import DayPicker, { DayModifiers } from "react-day-picker";
+import DayPicker from "react-day-picker";
 import "react-day-picker/lib/style.css";
 
 import { FiCalendar } from "react-icons/fi";
@@ -13,6 +13,13 @@ export interface Props {
   selectedDateText: (dateChoose: Date) => void;
 }
 
+/**
+ * Calendar and His Functions
+ * @constructor
+ * @param {boolean} isOpen - Know if the Calendar is open
+ * @param {(boolean) => void} toggleModal - Function to close the Calendar
+ * @param {(Date) => void} selectedDateText - Function to return the Date Value
+ */
 const Calendar: React.FC<Props> = ({
   isOpen,
   toggleModal,
@@ -30,14 +37,23 @@ const Calendar: React.FC<Props> = ({
     selectedDateText(selectedDate);
   }, [selectedDate, selectedDateText]);
 
+  /**
+   * Changing the Date on the Calendar
+   * @function
+   * @param {Date} day - The day selected
+   */
   const handleDateChange = useCallback(
-    (day: Date, modifiers: DayModifiers) => {
+    (day: Date) => {
       setSelectedDate(day);
       if (selectedDate === day) setOpenCalendar(false);
     },
     [selectedDate]
   );
 
+  /**
+   * Open and Close Calendar
+   * @function
+   */
   const handleOpenCalendar = useCallback(() => {
     setOpenCalendar(!openCalendar);
     toggleModal(!openCalendar);
