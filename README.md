@@ -9,6 +9,7 @@
 
 ## Sumary
 [Intro](#intro) :door:  
+[Some of Thecnologies](#some-of-thecnologies) :open_book:  
 [Step by step](#step-by-step) :open_book:  
 [Accessing the Deploy](#or-you-can-access-the-deploy) :computer:
 
@@ -17,6 +18,18 @@
 ## Intro
 
 It's a application that simulates a money transfer, that converts the money that you want to transfer to the value that it has in the country you want to send. It's using an Api that update the value of each money.
+
+
+## Some of Thecnologies
+
+**Front-End (ReactJS with TypeScript)**  
+Some of the Libraries:
+- axios
+- date-fns
+- react-day-picker
+- react-icons
+- react-router-dom
+- styled-components
 
 
 ## Step by step
