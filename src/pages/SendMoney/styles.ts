@@ -2,10 +2,10 @@ import styled from "styled-components";
 
 export const Container = styled.div`
   width: 100%;
-  /* max-width: 1440px; */
+  max-width: 1440px;
   max-height: 100vh;
 
-  margin: 0 auto;
+  left: 0;
 
   display: flex;
 

@@ -32,6 +32,7 @@ export const SelectionsDiv = styled.div`
   #selectionCountryDiv {
     display: flex;
     align-items: center;
+    width: 100%;
     max-width: 267px;
     height: 53px;
 
@@ -83,15 +84,13 @@ export const SelectionsDiv = styled.div`
 `;
 
 export const ConvertedMoneyDiv = styled.div`
-  width: 100%;
   margin-top: 28px;
 
   div {
     display: flex;
     flex-direction: column;
-    width: 100%;
 
-    max-width: 267px;
+    min-width: 267px;
     height: 128px;
 
     background: #e8eced;
