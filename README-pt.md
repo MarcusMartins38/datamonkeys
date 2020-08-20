@@ -36,16 +36,16 @@ Algumas das bibliotecas utilizadas:
 
 Com Yarn:
 ```
-$ git clone https://github.com/MarcusMartins38/datamonkeys.git
-$ cd datamonkeys
+$ git clone https://github.com/MarcusMartins38/Money_Transfer.git
+$ cd Money_Transfer
 $ yarn
 $ yarn start
 ```
 Com Npm:
 
 ```
-$ git clone https://github.com/MarcusMartins38/datamonkeys.git
-$ cd datamonkeys
+$ git clone https://github.com/MarcusMartins38/Money_Transfer.git
+$ cd Money_Transfer
 $ npm install
 $ npm start
 ```
