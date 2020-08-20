@@ -1,20 +1,32 @@
-# datamonkeys
+# Money Transfer
 
 <p align="center">
-<img src="./.github/HomeLigth.png" width=400 align="center" />
-<img src="./.github/HomeDark.png" width=400 align="center" />
+<img src="./.github/HomeLigth.png" width=350 align="center" />
+<img src="./.github/HomeDark.png" width=350 align="center" />
 </p>
 
-## Passo a passo
+## Sumary
+[Intro](#intro) :door:  
+[Step by step](#step-by-step) :open_book:  
+[Accessing the Deploy](#or-you-can-access-the-deploy) :computer:
 
-Com Yarn
+
+
+## Intro
+
+It's a application that simulates a money transfer, that converts the money that you want to transfer to the value that it has in the country you want to send. It's using an Api that update the value of each money.
+
+
+## Step by step
+
+With Yarn
 ```
 $ git clone https://github.com/MarcusMartins38/datamonkeys.git
 $ cd datamonkeys
 $ yarn
 $ yarn start
 ```
-Com Npm
+With Npm
 
 ```
 $ git clone https://github.com/MarcusMartins38/datamonkeys.git
