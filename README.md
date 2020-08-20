@@ -36,16 +36,16 @@ Some of the Libraries:
 
 With Yarn
 ```
-$ git clone https://github.com/MarcusMartins38/datamonkeys.git
-$ cd datamonkeys
+$ git clone https://github.com/MarcusMartins38/Money_Transfer.git
+$ cd Money_Transfer
 $ yarn
 $ yarn start
 ```
 With Npm
 
 ```
-$ git clone https://github.com/MarcusMartins38/datamonkeys.git
-$ cd datamonkeys
+$ git clone https://github.com/MarcusMartins38/Money_Transfer.git
+$ cd Money_Transfer
 $ npm install
 $ npm start
 ```
