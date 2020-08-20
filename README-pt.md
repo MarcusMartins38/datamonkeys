@@ -1,6 +1,6 @@
 # Money Transfer
 
-#### Languages: English or <a href="https://github.com/MarcusMartins38/datamonkeys/blob/master/README-pt.md">Português<a/>
+#### Linguagens: <a href="https://github.com/MarcusMartins38/datamonkeys">Inglês<a/> ou Português
 
 <p align="center">
 <img src="./.github/HomeLigth.png" width=350 align="center" />
@@ -8,7 +8,7 @@
 </p>
 
 ## Sumário
-[Introdução](#intro) :door:  
+[Introdução](#introdução) :door:  
 [Passo a passo](#passo-a-passo) :open_book:  
 [Acessando o Deploy](#ou-você-pode-acessar-o-deploy) :computer:
 
