@@ -1,0 +1,45 @@
+# Money Transfer
+
+#### Languages: English or <a href="https://github.com/MarcusMartins38/datamonkeys/blob/master/README-pt.md">Português<a/>  
+
+<p align="center">
+<img src="./.github/HomeLigth.png" width=350 align="center" />
+<img src="./.github/HomeDark.png" width=350 align="center" />
+</p>
+
+## Sumary
+[Intro](#intro) :door:  
+[Step by step](#step-by-step) :open_book:  
+[Accessing the Deploy](#or-you-can-access-the-deploy) :computer:
+
+
+
+## Intro
+
+It's a application that simulates a money transfer, that converts the money that you want to transfer to the value that it has in the country you want to send. It's using an Api that update the value of each money.
+
+
+## Step by step
+
+With Yarn
+```
+$ git clone https://github.com/MarcusMartins38/datamonkeys.git
+$ cd datamonkeys
+$ yarn
+$ yarn start
+```
+With Npm
+
+```
+$ git clone https://github.com/MarcusMartins38/datamonkeys.git
+$ cd datamonkeys
+$ npm install
+$ npm start
+```
+
+### Or you can access the Deploy
+
+https://keen-perlman-39eb80.netlify.app
+
+
+Obs: On this application, I'm using an Api to convert money, that gives me a limited access (1000 per month). If the app stop converting money, probably will be this.
