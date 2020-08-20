@@ -1,6 +1,6 @@
 # Money Transfer
 
-#### Linguagens: <a href="https://github.com/MarcusMartins38/datamonkeys">Inglês<a/> ou Português
+#### Linguagens: <a href="https://github.com/MarcusMartins38/datamonkeys">English<a/> ou Português
 
 <p align="center">
 <img src="./.github/HomeLigth.png" width=350 align="center" />
