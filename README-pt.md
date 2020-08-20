@@ -9,6 +9,7 @@
 
 ## Sumário
 [Introdução](#introdução) :door:  
+[Algumas das Tecnologias](#algumas-das-tecnologias) :computer:  
 [Passo a passo](#passo-a-passo) :open_book:  
 [Acessando o Deploy](#ou-você-pode-acessar-o-deploy) :computer:
 
@@ -17,6 +18,19 @@
 ## Introdução
 
 É uma aplicação que simula a transferencia de dinheiro. A aplicação converte o dinheiro que você pretende transferir, para o valor que ele vale, em relação ao país que você irá transferir.
+
+
+## Algumas das Tecnologias
+
+**Front-End (ReactJS com TypeScript)**  
+Algumas das bibliotecas utilizadas:
+- axios
+- date-fns
+- react-day-picker
+- react-icons
+- react-router-dom
+- styled-components
+
 
 ## Passo a passo
 
