@@ -9,7 +9,7 @@
 
 ## Sumary
 [Intro](#intro) :door:  
-[Some of Thecnologies](#some-of-thecnologies) :open_book:  
+[Some of Thecnologies](#some-of-thecnologies) :computer:  
 [Step by step](#step-by-step) :open_book:  
 [Accessing the Deploy](#or-you-can-access-the-deploy) :computer:
 
