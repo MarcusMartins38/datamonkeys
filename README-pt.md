@@ -52,7 +52,7 @@ $ npm start
 
 ### Ou você pode acessar o Deploy
 
-https://keen-perlman-39eb80.netlify.app
+https://money-transfer.netlify.app
 
 
 Obs: Nessa aplicação, eu estou usando uma Api que converte o dinheiro, que me da um acesso limitado (1000 por mês). Se a aplicação parar de converter o dinheiro, provavelmente é porque atingiu o limite do mês.
